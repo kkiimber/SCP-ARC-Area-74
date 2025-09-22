@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 6209.15 3600.35">
+  <defs>
+    <style>
+      .uuid-780cf9fe-10ed-4932-a5b5-158e0c2b0861 {
+        fill: url(#uuid-421674eb-c5fd-456d-beb1-d7b50a41e26a);
+      }
+
+      .uuid-780cf9fe-10ed-4932-a5b5-158e0c2b0861, .uuid-07041078-3e61-4fbf-ba28-eaeb9d3a3148, .uuid-f8c0327e-29cf-44ab-87d0-cb120a11dab7, .uuid-32139186-9dca-420c-88d6-10c5957ed727, .uuid-8296d68d-efb7-4ecf-afa5-ae8f55971f7d, .uuid-35e19a75-9741-4374-8b2b-faaf2efd5ce5, .uuid-df50ea0d-db78-4abd-9654-8f53e900391c, .uuid-35d450bb-6078-4b24-a96f-2e6798299679, .uuid-3dc60107-6a77-430f-bedb-72a630f19681, .uuid-2fa0dec8-4084-4cec-89bd-6d452f677a78, .uuid-f70155d4-44a8-42ce-b66a-186cd84afeb8, .uuid-84eb34f5-1fe7-4f10-8ef7-e96467e26578, .uuid-659d61d1-0f8e-4f23-95f7-a723504d62ef, .uuid-f5c9bb00-1ab0-4827-9d76-b9048f2880f2, .uuid-a1e08a65-e49b-4b19-aaca-46b2fdd79415, .uuid-cc0c2d38-c04b-4b9c-8f39-01e1fbc7e09e, .uuid-7f9f18c0-4c7e-45bf-9e5c-d8167a676bec, .uuid-b0d9cfd3-7217-4c7a-89b9-493daa9e4ff6, .uuid-f4f62f59-8711-4994-a8ed-aa857f3201bf, .uuid-f0ba8165-09de-4323-8643-2e5c08a6079d {
+        stroke: #000;
+        stroke-width: .25px;
+      }
+
+      .uuid-780cf9fe-10ed-4932-a5b5-158e0c2b0861, .uuid-07041078-3e61-4fbf-ba28-eaeb9d3a3148, .uuid-f8c0327e-29cf-44ab-87d0-cb120a11dab7, .uuid-32139186-9dca-420c-88d6-10c5957ed727, .uuid-8296d68d-efb7-4ecf-afa5-ae8f55971f7d, .uuid-df50ea0d-db78-4abd-9654-8f53e900391c, .uuid-35d450bb-6078-4b24-a96f-2e6798299679, .uuid-3dc60107-6a77-430f-bedb-72a630f19681, .uuid-f70155d4-44a8-42ce-b66a-186cd84afeb8, .uuid-84eb34f5-1fe7-4f10-8ef7-e96467e26578, .uuid-659d61d1-0f8e-4f23-95f7-a723504d62ef, .uuid-f5c9bb00-1ab0-4827-9d76-b9048f2880f2, .uuid-a1e08a65-e49b-4b19-aaca-46b2fdd79415, .uuid-cc0c2d38-c04b-4b9c-8f39-01e1fbc7e09e, .uuid-7f9f18c0-4c7e-45bf-9e5c-d8167a676bec, .uuid-b0d9cfd3-7217-4c7a-89b9-493daa9e4ff6, .uuid-f4f62f59-8711-4994-a8ed-aa857f3201bf {
+        stroke-miterlimit: 10;
+      }
+
+      .uuid-07041078-3e61-4fbf-ba28-eaeb9d3a3148 {
+        fill: url(#uuid-f94217dc-e40c-451e-b0ed-1e7533f3f5e5);
+      }
+
+      .uuid-f8c0327e-29cf-44ab-87d0-cb120a11dab7 {
+        fill: #9f9f9f;
+      }
+
+      .uuid-32139186-9dca-420c-88d6-10c5957ed727 {
+        fill: #600000;
+      }
+
+      .uuid-8296d68d-efb7-4ecf-afa5-ae8f55971f7d {
+        fill: url(#uuid-ae5f915d-64e3-41d5-8577-d6fd814e9fd1);
+      }
+
+      .uuid-2120e3ad-2b9a-4834-b9e0-e622e539c463 {
+        fill: #1b0b18;
+      }
+
+      .uuid-35e19a75-9741-4374-8b2b-faaf2efd5ce5 {
+        stroke-linecap: round;
+      }
+
+      .uuid-35e19a75-9741-4374-8b2b-faaf2efd5ce5, .uuid-df50ea0d-db78-4abd-9654-8f53e900391c {
+        fill: none;
+      }
+
+      .uuid-35e19a75-9741-4374-8b2b-faaf2efd5ce5, .uuid-2fa0dec8-4084-4cec-89bd-6d452f677a78, .uuid-f0ba8165-09de-4323-8643-2e5c08a6079d {
+        stroke-linejoin: round;
+      }
+
+      .uuid-35d450bb-6078-4b24-a96f-2e6798299679 {
+        fill: #e6e6e6;
+      }
+
+      .uuid-3dc60107-6a77-430f-bedb-72a630f19681 {
+        fill: #ff7276;
+      }
+
+      .uuid-2fa0dec8-4084-4cec-89bd-6d452f677a78 {
+        fill: #ccc;
+      }
+
+      .uuid-f70155d4-44a8-42ce-b66a-186cd84afeb8 {
+        fill: #c7ab95;
+      }
+
+      .uuid-84eb34f5-1fe7-4f10-8ef7-e96467e26578 {
+        fill: url(#uuid-c5bb9cd2-3067-4d97-b4af-921fd25adbdb);
+      }
+
+      .uuid-659d61d1-0f8e-4f23-95f7-a723504d62ef {
+        fill: url(#uuid-b518e818-2ca4-4d19-9138-7a45092029ce);
+      }
+
+      .uuid-081a3b83-f25f-44ea-8a71-817c349131bf {
+        fill: url(#uuid-0b7d4abb-d82b-44a3-9003-583330bffb3d);
+      }
+
+      .uuid-f5c9bb00-1ab0-4827-9d76-b9048f2880f2 {
+        fill: url(#uuid-d8db6f73-80db-4c09-a071-c2e9d79a1675);
+      }
+
+      .uuid-a1e08a65-e49b-4b19-aaca-46b2fdd79415 {
+        fill: url(#uuid-742f3ef7-200d-44ff-88dc-b3f431cf7644);
+      }
+
+      .uuid-cc0c2d38-c04b-4b9c-8f39-01e1fbc7e09e {
+        fill: #bebebe;
+      }
+
+      .uuid-7f9f18c0-4c7e-45bf-9e5c-d8167a676bec {
+        fill: #a0a0a0;
+      }
+
+      .uuid-b0d9cfd3-7217-4c7a-89b9-493daa9e4ff6 {
+        fill: url(#uuid-01a5b6fa-b820-4291-a674-b18ceee9de98);
+      }
+
+      .uuid-f4f62f59-8711-4994-a8ed-aa857f3201bf {
+        fill: gray;
+      }
+
+      .uuid-89b7a890-10a4-4bb4-a745-35732576f40a {
+        fill: url(#uuid-f12ecf95-3b31-4f1a-b723-a8a8e8b16f32);
+      }
+
+      .uuid-f0ba8165-09de-4323-8643-2e5c08a6079d {
+        fill: #b5fbff;
+      }
+    </style>
+    <linearGradient id="uuid-d8db6f73-80db-4c09-a071-c2e9d79a1675" data-name="Безымянный градиент 94" x1="1166.89" y1="2448.95" x2="1166.89" y2="2910.02" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#bfbfbf"/>
+      <stop offset="1" stop-color="#656164"/>
+    </linearGradient>
+    <linearGradient id="uuid-01a5b6fa-b820-4291-a674-b18ceee9de98" data-name="Безымянный градиент 85" x1="1166.68" y1="2910.02" x2="1166.68" y2="2448.95" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#604c24"/>
+      <stop offset="1" stop-color="#ffe13f"/>
+    </linearGradient>
+    <linearGradient id="uuid-421674eb-c5fd-456d-beb1-d7b50a41e26a" data-name="Безымянный градиент 75" x1="3306.65" y1="1294.25" x2="3306.65" y2="1307.69" gradientTransform="translate(184.58 6.92)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="gray"/>
+      <stop offset="1" stop-color="#9f9f9f"/>
+    </linearGradient>
+    <linearGradient id="uuid-f12ecf95-3b31-4f1a-b723-a8a8e8b16f32" data-name="Безымянный градиент 42" x1="3183.68" y1="1617.21" x2="3183.68" y2="2071.58" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="gray"/>
+      <stop offset="1" stop-color="#bfbfbf"/>
+    </linearGradient>
+    <linearGradient id="uuid-0b7d4abb-d82b-44a3-9003-583330bffb3d" data-name="Безымянный градиент 69" x1="3222.9" y1="2071.58" x2="3222.9" y2="1617.21" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ccc"/>
+      <stop offset=".36" stop-color="#bababa"/>
+      <stop offset="1" stop-color="#9f9f9f"/>
+    </linearGradient>
+    <linearGradient id="uuid-f94217dc-e40c-451e-b0ed-1e7533f3f5e5" data-name="Безымянный градиент 53" x1="3336.77" y1="1971.76" x2="3336.77" y2="1946.24" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="gray"/>
+      <stop offset="1" stop-color="#a0a0a0"/>
+    </linearGradient>
+    <linearGradient id="uuid-c5bb9cd2-3067-4d97-b4af-921fd25adbdb" data-name="Безымянный градиент 3" x1="3364.08" y1="1971.76" x2="3364.08" y2="1946.24" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#bfbfbf"/>
+      <stop offset="1" stop-color="#a0a0a0"/>
+    </linearGradient>
+    <linearGradient id="uuid-ae5f915d-64e3-41d5-8577-d6fd814e9fd1" data-name="Безымянный градиент 116" x1="3372.8" y1="1756.88" x2="3390.93" y2="1756.88" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#a0a0a0"/>
+      <stop offset="1" stop-color="gray"/>
+    </linearGradient>
+    <linearGradient id="uuid-b518e818-2ca4-4d19-9138-7a45092029ce" data-name="Безымянный градиент 53" x1="3892.43" y1="1606.43" x2="3892.43" y2="1580.91" xlink:href="#uuid-f94217dc-e40c-451e-b0ed-1e7533f3f5e5"/>
+    <linearGradient id="uuid-742f3ef7-200d-44ff-88dc-b3f431cf7644" data-name="Безымянный градиент 82" x1="3919.74" y1="1606.43" x2="3919.74" y2="1580.91" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#bfbfbf"/>
+      <stop offset="1" stop-color="#a0a0a0"/>
+    </linearGradient>
+  </defs>
+  <g id="uuid-56a40976-5f7e-45e8-9ba0-d665a345b1ea" data-name="Фон">
+    <rect class="uuid-2120e3ad-2b9a-4834-b9e0-e622e539c463" x=".55" y="0" width="6209.15" height="3600.35"/>
+  </g>
+  <g id="uuid-d9340f37-ad61-48b9-91ac-202e5be38853" data-name="-2 Уровень">
+    <g id="uuid-b2bcf278-d4d7-4495-9cff-01462b9e7f3d" data-name="035">
+      <g id="uuid-bb8f34a7-fb2d-41b5-9f9f-a07e787817e2" data-name="Спуск">
+        <rect class="uuid-f5c9bb00-1ab0-4827-9d76-b9048f2880f2" x="1141.94" y="2448.95" width="49.91" height="461.07"/>
+        <rect class="uuid-b0d9cfd3-7217-4c7a-89b9-493daa9e4ff6" x="1162.98" y="2448.95" width="7.39" height="461.07"/>
+        <rect class="uuid-f70155d4-44a8-42ce-b66a-186cd84afeb8" x="1153.15" y="2886.06" width="26.87" height="23.96"/>
+      </g>
+      <path class="uuid-f4f62f59-8711-4994-a8ed-aa857f3201bf" d="M1171.71,2973.83v-1.24h-10.08v1.24h-63.34v27.97h9.89v4.03h-9.89v73.85h56.85v-32.89h-24.17v-40.97h-12.7v-4.03h87.7v1.13h10.08v-1.13h10.93v-27.97h-55.28ZM1121.91,3054.95c0-.45.36-.81.81-.81h10.99c.45,0,.81.36.81.81v.33h1.07c.27,0,.49.22.49.49v2.16c0,.27-.22.49-.49.49h-1.07v.29c0,.45-.36.81-.81.81h-10.99c-.45,0-.81-.36-.81-.81v-3.75Z"/>
+      <polygon class="uuid-f4f62f59-8711-4994-a8ed-aa857f3201bf" points="1171.71 2969.58 1197.44 2969.58 1197.44 2943.39 1189.16 2943.39 1189.16 2935.56 1192.08 2932.63 1197.44 2932.63 1197.44 2917.42 1192.08 2917.42 1189.16 2914.49 1189.16 2910.02 1144.63 2910.02 1144.63 2969.58 1161.63 2969.58 1161.63 2970.82 1171.71 2970.82 1171.71 2969.58"/>
+      <polygon class="uuid-3dc60107-6a77-430f-bedb-72a630f19681" points="1216.05 3005.83 1226.99 3005.83 1226.99 3060.67 1171.69 3060.67 1171.69 3005.83 1205.97 3005.83 1205.97 3004.7 1216.05 3004.7 1216.05 3005.83"/>
+      <g id="uuid-f096a31a-4810-4da1-9398-b4006154e45a" data-name="Лестница">
+        <image width="52" height="27" transform="translate(1103 3052)" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAAAbCAYAAAAzgqwIAAAACXBIWXMAAAsSAAALEgHS3X78AAADNklEQVRYhd1Yy0osMRA9Sbc/5sKdCKKoiCjiwgcKLt3NF4gbQUZ8gCCCW3d+mknqLu6tWKmuTPe04+YeaNJJKkmdeqVn3GQyIQyAcw5E36Lee6SUMJlM3JD1Q/D5+UnOOcgnpZTP1yCiYnx5edm1lqBUWI9x65xD27aL4gIASCllJfkM7hNRQUCOEVHWrUNI9lmoNlczxljEGOG9BxEhpZT3ZyI8ZhHk6GlZaSkoldabSCJN0yyMzMfHB6WUkFLK+0pSTFQS1H0A8KysJMWPVN57j7Zt4b0vxm9ubgblYB++vr4QQshEQgjZU9zGGBFjBBPndwBYWVlxgPCQtIL2moYkq8NyDN7f34kVIyI0TVNEB4/Lluc49DKHq6srZ3mFPaFJ8GH8NE2D29vb0V56e3vLocYgIoQQEGPseEkS4HUFIeBvLnA4scIyT1j5tm2LsFtaWspk7+7u5ib1+vpKMnxCCEU4EVGnlaEnqxyjBbrVjKFzS8rq1jmH6XRK3nscHR31lr+XlxeSIcUIIWSD6bCS+gDfxUDuUVwkegG/62pnPRKPj48EAIeHh8XE8/MzDSn1mqjs6/INAKurq1k4v1xfX5MmIgkBpSdlWFrV0TKMbHm9Nopsm6YpvCDl5AW8traWD2rlgTUFrNKu1+mQ7ENKqZC1vgJijB3v688dSQb4VxQA4PLy0mkF9Z0zhJg2yCxYSS37/M4VkAuGrnYmIcAOg1peWTLz3kmWQrV7J8bYkV1fX+9YrdDg4uLCWcrWkl8qMJaE9FLN6gx5+dbkOiY9Pz93s5S35mrycn4odMjpMSa1sbFhbmp+/9dCzZLpI8MK1WS0pXUVs9Zubm5WDzSD/uzsLBcIi4Dsa0X0+xAStXndAsDW1tbMzatZfHp6WlQ9ib6+xlCCVrhJ9JEBZhACgJOTk84G85IZCouUHN/e3h50UG+dPT4+drNCTcOas6xtVbuazM7OzmCrzWXe6XRKQ8iNHbPydHd3dy4dR8XL/f09Wd9rVn/W+Kzyv7e3N0q30Qnw8PBANaU6h8xBcn9//0dJubC/bfgnwxgP/ZREseeiNtJ4enoqslwSOjg4+LVz/zv8ATrZKCqw6a0vAAAAAElFTkSuQmCC"/>
+        <path class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" d="M1154.35,3053c0,14.1-11.43,25.53-25.53,25.53s-25.53-11.43-25.53-25.53h15.4c0,5.59,4.54,10.13,10.13,10.13s10.13-4.54,10.13-10.13v-6.17h15.4v6.17"/>
+        <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="1118.7" y1="3053" x2="1103.3" y2="3053"/>
+        <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="1103.69" y1="3057.43" x2="1118.85" y2="3054.76"/>
+        <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="1104.84" y1="3061.73" x2="1119.31" y2="3056.46"/>
+        <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="1106.72" y1="3065.76" x2="1120.05" y2="3058.06"/>
+        <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="1109.27" y1="3069.41" x2="1121.07" y2="3059.51"/>
+        <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="1112.42" y1="3072.55" x2="1122.32" y2="3060.76"/>
+        <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="1116.06" y1="3075.1" x2="1123.76" y2="3061.77"/>
+        <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="1120.1" y1="3076.98" x2="1125.36" y2="3062.52"/>
+        <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="1124.39" y1="3078.14" x2="1127.07" y2="3062.97"/>
+        <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="1128.83" y1="3078.52" x2="1128.83" y2="3063.13"/>
+        <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="1133.26" y1="3078.14" x2="1130.59" y2="3062.97"/>
+        <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="1137.56" y1="3076.98" x2="1132.29" y2="3062.52"/>
+        <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="1141.59" y1="3075.1" x2="1133.89" y2="3061.77"/>
+        <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="1145.24" y1="3072.55" x2="1135.34" y2="3060.76"/>
+        <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="1148.38" y1="3069.41" x2="1136.59" y2="3059.51"/>
+        <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="1150.93" y1="3065.76" x2="1137.6" y2="3058.06"/>
+        <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="1152.81" y1="3061.73" x2="1138.35" y2="3056.46"/>
+        <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="1153.97" y1="3057.43" x2="1138.8" y2="3054.76"/>
+        <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="1154.35" y1="3053" x2="1138.96" y2="3053"/>
+        <rect class="uuid-cc0c2d38-c04b-4b9c-8f39-01e1fbc7e09e" x="1138.96" y="3046.83" width="15.4" height="6.17" transform="translate(2293.31 6099.83) rotate(180)"/>
+      </g>
+      <g id="uuid-4adc8622-b917-4e5a-bdaf-ea76925b6df8" data-name="Мебель">
+        <rect class="uuid-2fa0dec8-4084-4cec-89bd-6d452f677a78" x="1188.92" y="2917.97" width="8.52" height="12.77"/>
+        <rect class="uuid-2fa0dec8-4084-4cec-89bd-6d452f677a78" x="1192.24" y="2943.84" width="4.9" height="12.25"/>
+        <rect class="uuid-2fa0dec8-4084-4cec-89bd-6d452f677a78" x="1192.24" y="2956.86" width="4.9" height="12.25"/>
+        <rect class="uuid-2fa0dec8-4084-4cec-89bd-6d452f677a78" x="1143.44" y="2934.77" width="16.73" height="9.59" transform="translate(-1967.83 3424.93) rotate(-77.45)"/>
+        <g>
+          <rect class="uuid-f0ba8165-09de-4323-8643-2e5c08a6079d" x="1194.75" y="3038.73" width="9.41" height="9.4"/>
+          <rect class="uuid-2fa0dec8-4084-4cec-89bd-6d452f677a78" x="1195.88" y="3039.85" width="7.16" height="7.17"/>
+        </g>
+      </g>
+      <g id="uuid-9086bfc9-6661-4895-bea3-8ec8f49f6a78" data-name="Двери">
+        <rect class="uuid-32139186-9dca-420c-88d6-10c5957ed727" x="1161.63" y="2970.82" width="10.08" height="1.77"/>
+        <rect class="uuid-32139186-9dca-420c-88d6-10c5957ed727" x="1205.97" y="3002.93" width="10.08" height="1.77"/>
+        <rect class="uuid-32139186-9dca-420c-88d6-10c5957ed727" x="1108.18" y="3002.93" width="10.08" height="1.77"/>
+      </g>
+    </g>
+    <g id="uuid-a25cd681-b7cb-4ffb-96ae-5347e8796d72" data-name="ТП-106">
+      <polyline class="uuid-f4f62f59-8711-4994-a8ed-aa857f3201bf" points="3230.35 1617.21 3230.35 1586.43 3502.17 1314.61 3515.83 1314.61 3515.83 1404.14 3706.3 1404.14 3706.3 1198.44 3491.44 1198.46 3491.44 1204.73 3479.4 1204.73 3479.4 1190.91 3431.89 1190.91 3431.89 1204.73 3419.61 1204.73 3419.61 1198.46 3409.28 1198.44 3409.28 1276.01 3137 1548.29 3137 1617.21"/>
+      <polyline class="uuid-f8c0327e-29cf-44ab-87d0-cb120a11dab7" points="3215.46 1617.21 3215.46 1580.53 3481.38 1314.61 3502.17 1314.61 3230.35 1586.43 3230.35 1617.21"/>
+      <g id="uuid-1b21180f-f6ac-4fe7-a3c0-b448ddd71e92" data-name="Мебель">
+        <path class="uuid-2fa0dec8-4084-4cec-89bd-6d452f677a78" d="M3527.01,1229.54h-24.61v-30.36l.3-.3h24.01l.3.3v30.36Z"/>
+        <path class="uuid-2fa0dec8-4084-4cec-89bd-6d452f677a78" d="M3602.88,1229.54h-24.61v-30.36l.3-.3h24.01l.3.3v30.36Z"/>
+        <path class="uuid-2fa0dec8-4084-4cec-89bd-6d452f677a78" d="M3628.16,1229.54h-24.61v-30.36l.3-.3h24.01l.3.3v30.36Z"/>
+        <path class="uuid-2fa0dec8-4084-4cec-89bd-6d452f677a78" d="M3675.06,1262.67v-24.61s30.36,0,30.36,0l.3.3v24.01c-.12.12-.18.18-.3.3h-30.36Z"/>
+        <path class="uuid-2fa0dec8-4084-4cec-89bd-6d452f677a78" d="M3675.06,1287.96v-24.61s30.36,0,30.36,0l.3.3v24.01c-.12.12-.18.18-.3.3h-30.36Z"/>
+        <path class="uuid-2fa0dec8-4084-4cec-89bd-6d452f677a78" d="M3577.59,1229.54h-24.61v-30.36l.3-.3h24.01l.3.3v30.36Z"/>
+        <path class="uuid-2fa0dec8-4084-4cec-89bd-6d452f677a78" d="M3552.3,1229.54h-24.61v-30.36l.3-.3h24.01l.3.3v30.36Z"/>
+        <polygon class="uuid-2fa0dec8-4084-4cec-89bd-6d452f677a78" points="3703.43 1331.43 3703.43 1306.82 3702.68 1306.82 3702.68 1306.03 3647.44 1306.03 3645.25 1310.01 3645.25 1328.24 3647.44 1332.22 3702.68 1332.22 3702.68 1331.43 3703.43 1331.43"/>
+      </g>
+      <g id="uuid-9b26df3f-c24d-448e-bc5e-39b6084c1998" data-name="Лестница">
+        <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3485.19" y1="1301.17" x2="3485.19" y2="1315.27"/>
+        <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3497.28" y1="1301.17" x2="3497.28" y2="1315.27"/>
+        <rect class="uuid-780cf9fe-10ed-4932-a5b5-158e0c2b0861" x="3485.19" y="1301.17" width="12.09" height="13.44"/>
+        <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3485.19" y1="1312.37" x2="3497.28" y2="1312.37"/>
+        <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3485.19" y1="1310.13" x2="3497.28" y2="1310.13"/>
+        <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3485.19" y1="1307.89" x2="3497.28" y2="1307.89"/>
+        <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3485.19" y1="1305.65" x2="3497.28" y2="1305.65"/>
+        <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3485.19" y1="1303.41" x2="3497.28" y2="1303.41"/>
+        <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3485.19" y1="1301.16" x2="3485.19" y2="1300.23"/>
+        <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3497.28" y1="1301.16" x2="3497.28" y2="1300.23"/>
+      </g>
+      <g>
+        <rect class="uuid-89b7a890-10a4-4bb4-a745-35732576f40a" x="3137.01" y="1617.21" width="93.34" height="454.37"/>
+        <rect class="uuid-081a3b83-f25f-44ea-8a71-817c349131bf" x="3215.46" y="1617.21" width="14.89" height="454.37"/>
+        <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3215.46" y1="1617.21" x2="3215.46" y2="2071.58"/>
+        <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3230.35" y1="1617.21" x2="3230.35" y2="2071.58"/>
+        <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3137.01" y1="2071.58" x2="3137.01" y2="1617.21"/>
+      </g>
+      <path id="uuid-7e794497-a98c-4353-ac5a-e7b59a3411eb" data-name="106" class="uuid-f4f62f59-8711-4994-a8ed-aa857f3201bf" d="M3479.4,1191.26v-11.4h12.04v2.46h603.87v-103.27h-4.81l-108.1-269.69-280.35,204.35h-147.26l-281.41-204.35-107.85,269.71h-5.14v103.26h259.21v-2.46h12.28v11.4M3690.86,1144.42h-126v-100.63h39.17v57.53h47.67v-57.53h39.17v100.63Z"/>
+    </g>
+    <g id="uuid-df855db9-500c-47de-a6e5-c27a35c7be2a" data-name="Подвал">
+      <path class="uuid-f4f62f59-8711-4994-a8ed-aa857f3201bf" d="M3873.49,1623.91v149.75h-163.59v-2.24h-13.44v2.24h-118.65v-2.24h-13.44v2.24h-119.06l-7.39,7.39v47.45h-2.24v13.44h2.24v118.64h-2.24v13.44h2.24v119.72h-40.06v-103.14h-1.24s0-10.08,0-10.08h1.24v-199.24l-7.6-7.6h-32.02v-39.62s51.63,0,51.71,0v2.24h49.02v-2.24h142.35v-143.92h14.76v-4.25h-29.09v-65.58h29.09v-4.25h-19.46v-37.15h-43.43v-37.16h135.85v37.16h-43.19v37.15h-19.69v4.25h28.87v65.58h-28.87v4.25h14.77v143.92h10.56v2.24h49.02v-2.24h133.13v-89.12h2.24v-49.02h-2.24v-41.37h39.84v59.28h1.13s0,10.08,0,10.08h-1.13Z"/>
+      <g id="uuid-e5742606-04a7-4c65-82fb-fbb83fcb1337" data-name="Мебель">
+        <rect class="uuid-2fa0dec8-4084-4cec-89bd-6d452f677a78" x="3600.86" y="1478.85" width="6.25" height="6.25" rx=".21" ry=".21" transform="translate(278.51 -549.33) rotate(9.07)"/>
+        <rect class="uuid-2fa0dec8-4084-4cec-89bd-6d452f677a78" x="3593.62" y="1468.25" width="6.25" height="6.25" rx=".21" ry=".21" transform="translate(-264.47 1032.55) rotate(-15.76)"/>
+        <polyline class="uuid-35e19a75-9741-4374-8b2b-faaf2efd5ce5" points="3604.64 1469.93 3605.49 1473.89 3602.6 1476.72 3605.49 1473.89 3609.43 1474.81"/>
+      </g>
+      <g>
+        <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3397.87" y1="1764.51" x2="3397.87" y2="1781.28"/>
+        <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3397.87" y1="1750.83" x2="3397.87" y2="1734.05"/>
+      </g>
+      <g id="uuid-3f509c21-52a7-42be-a4b9-a03cf285a187" data-name="Лестницы">
+        <g>
+          <polygon class="uuid-f4f62f59-8711-4994-a8ed-aa857f3201bf" points="3393.62 1990.61 3393.62 1997.95 3327.82 1997.95 3327.82 1971.76 3393.62 1971.76 3393.62 1980.52 3394.86 1980.52 3394.86 1990.61 3393.62 1990.61"/>
+          <rect class="uuid-7f9f18c0-4c7e-45bf-9e5c-d8167a676bec" x="3327.82" y="1920.06" width="45.2" height="26.19"/>
+          <g>
+            <rect class="uuid-07041078-3e61-4fbf-ba28-eaeb9d3a3148" x="3327.82" y="1946.24" width="17.89" height="25.52"/>
+            <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3327.82" y1="1968.57" x2="3345.72" y2="1968.57"/>
+            <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3327.82" y1="1965.38" x2="3345.72" y2="1965.38"/>
+            <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3327.82" y1="1962.19" x2="3345.72" y2="1962.19"/>
+            <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3327.82" y1="1959" x2="3345.72" y2="1959"/>
+            <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3327.82" y1="1955.81" x2="3345.72" y2="1955.81"/>
+            <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3327.82" y1="1952.62" x2="3345.72" y2="1952.62"/>
+            <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3327.82" y1="1949.43" x2="3345.72" y2="1949.43"/>
+          </g>
+          <g>
+            <rect class="uuid-84eb34f5-1fe7-4f10-8ef7-e96467e26578" x="3355.13" y="1946.24" width="17.89" height="25.52"/>
+            <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3355.13" y1="1968.57" x2="3373.03" y2="1968.57"/>
+            <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3355.13" y1="1965.38" x2="3373.03" y2="1965.38"/>
+            <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3355.13" y1="1962.19" x2="3373.03" y2="1962.19"/>
+            <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3355.13" y1="1959" x2="3373.03" y2="1959"/>
+            <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3355.13" y1="1955.81" x2="3373.03" y2="1955.81"/>
+            <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3355.13" y1="1952.62" x2="3373.03" y2="1952.62"/>
+            <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3355.13" y1="1949.43" x2="3373.03" y2="1949.43"/>
+          </g>
+        </g>
+        <g>
+          <rect class="uuid-7f9f18c0-4c7e-45bf-9e5c-d8167a676bec" x="3358.25" y="1734.05" width="14.55" height="39.62"/>
+          <g>
+            <rect class="uuid-8296d68d-efb7-4ecf-afa5-ae8f55971f7d" x="3372.8" y="1748.15" width="18.13" height="17.47"/>
+            <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3387.91" y1="1748.15" x2="3387.91" y2="1765.62"/>
+            <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3378.85" y1="1748.15" x2="3378.85" y2="1765.62"/>
+            <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3375.82" y1="1748.15" x2="3375.82" y2="1765.62"/>
+            <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3381.87" y1="1748.15" x2="3381.87" y2="1765.62"/>
+            <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3384.89" y1="1748.15" x2="3384.89" y2="1765.62"/>
+          </g>
+        </g>
+        <g>
+          <polygon class="uuid-f4f62f59-8711-4994-a8ed-aa857f3201bf" points="3877.53 1613.83 3877.53 1606.43 3950.27 1606.43 3950.27 1632.61 3877.53 1632.61 3877.53 1623.91 3876.4 1623.91 3876.4 1613.83 3877.53 1613.83"/>
+          <rect class="uuid-7f9f18c0-4c7e-45bf-9e5c-d8167a676bec" x="3883.48" y="1554.72" width="45.2" height="26.19"/>
+          <g>
+            <rect class="uuid-659d61d1-0f8e-4f23-95f7-a723504d62ef" x="3883.48" y="1580.91" width="17.89" height="25.52"/>
+            <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3883.48" y1="1603.24" x2="3901.38" y2="1603.24"/>
+            <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3883.48" y1="1600.05" x2="3901.38" y2="1600.05"/>
+            <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3883.48" y1="1596.86" x2="3901.38" y2="1596.86"/>
+            <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3883.48" y1="1593.67" x2="3901.38" y2="1593.67"/>
+            <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3883.48" y1="1590.48" x2="3901.38" y2="1590.48"/>
+            <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3883.48" y1="1587.29" x2="3901.38" y2="1587.29"/>
+            <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3883.48" y1="1584.1" x2="3901.38" y2="1584.1"/>
+          </g>
+          <g>
+            <rect class="uuid-a1e08a65-e49b-4b19-aaca-46b2fdd79415" x="3910.79" y="1580.91" width="17.89" height="25.52"/>
+            <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3910.79" y1="1603.24" x2="3928.69" y2="1603.24"/>
+            <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3910.79" y1="1600.05" x2="3928.69" y2="1600.05"/>
+            <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3910.79" y1="1596.86" x2="3928.69" y2="1596.86"/>
+            <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3910.79" y1="1593.67" x2="3928.69" y2="1593.67"/>
+            <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3910.79" y1="1590.48" x2="3928.69" y2="1590.48"/>
+            <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3910.79" y1="1587.29" x2="3928.69" y2="1587.29"/>
+            <line class="uuid-df50ea0d-db78-4abd-9654-8f53e900391c" x1="3910.79" y1="1584.1" x2="3928.69" y2="1584.1"/>
+          </g>
+        </g>
+      </g>
+      <g id="uuid-28235fab-f43f-40f0-89a6-8e0e78b299c1" data-name="Двери">
+        <rect class="uuid-35d450bb-6078-4b24-a96f-2e6798299679" x="3394.86" y="1980.52" width="1.77" height="10.08"/>
+        <rect class="uuid-32139186-9dca-420c-88d6-10c5957ed727" x="3616.09" y="1587.13" width="10.08" height="1.77"/>
+        <rect class="uuid-32139186-9dca-420c-88d6-10c5957ed727" x="3616.09" y="1517.29" width="10.08" height="1.77"/>
+        <rect class="uuid-35d450bb-6078-4b24-a96f-2e6798299679" x="3874.63" y="1613.83" width="1.77" height="10.08"/>
+      </g>
+    </g>
+  </g>
+</svg>

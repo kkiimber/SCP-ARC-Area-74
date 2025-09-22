@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карта SCP ARC Area-74 v3-1et</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Custom scrollbar - Webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Custom scrollbar - Firefox */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.05) transparent;
+        }
+
+        *::-moz-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        *::-moz-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            background-color: #1b0b18;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        
+        #map-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .floor-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+        
+        .floor-svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        #locations-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.3);
+            color: white;
+            padding: 15px 20px;
+            overflow-y: auto;
+            z-index: 90;
+            transition: transform 0.3s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        #locations-panel.collapsed {
+            transform: translateX(-100%);
+        }
+        
+        .collapsed-panel {
+            position: fixed;
+            top: 10px;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 90;
+            transition: transform 0.3s ease;
+            transform: translateX(0);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        #locations-panel.collapsed + .collapsed-panel {
+            transform: translateX(0);
+        }
+        
+        #locations-panel:not(.collapsed) + .collapsed-panel {
+            display: none;
+        }
+        
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            position: relative;
+            padding-right: 35px;
+        }
+
+        .panel-header .toggle-btn {
+            position: absolute;
+            right: 10px;
+        }
+        
+        .toggle-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .toggle-btn:hover {
+            color: #FF9800;
+        }
+        
+        #locations-panel.collapsed .toggle-btn {
+            transform: rotate(180deg);
+        }
+        
+        #locations-list {
+            list-style: none;
+        }
+        
+        #locations-list li:not(.category-header) {
+            padding: 10px;
+            margin-bottom: 5px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        #locations-list li:not(.category-header):hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        #zoom-controls {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            display: flex;
+            flex-direction: column;
+            z-index: 90;
+        }
+        
+        .zoom-btn {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.3);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            margin: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        #floor-controls {
+            position: fixed;
+            top: 80px;
+            right: 10px;
+            display: flex;
+            flex-direction: column;
+            z-index: 90;
+        }
+        
+        .floor-controls-bg {
+            display: none;
+        }
+        
+        .floor-btn {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.3);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .floor-btn:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .floor-btn.active {
+            background-color: rgba(255, 152, 0, 0.5);
+            font-weight: bold;
+        }
+        
+        .location-marker {
+            fill: red;
+            r: 10;
+            animation: pulse 2s infinite;
+            pointer-events: none;
+        }
+        
+        .location-marker-text {
+            fill: white;
+            font-size: 12px;
+            text-anchor: middle;
+            pointer-events: none;
+            font-weight: bold;
+            paint-order: stroke;
+            stroke: #000;
+            stroke-width: 3px;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        
+        @keyframes pulse {
+            0% { r: 8; opacity: 1; }
+            50% { r: 12; opacity: 0.7; }
+            100% { r: 8; opacity: 1; }
+        }
+
+        .category-header {
+            padding: 10px;
+            margin-bottom: 5px;
+            background-color: rgba(255, 152, 0, 0.2);
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.2s;
+            position: relative;
+            padding-right: 30px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .category-arrow {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            transition: transform 0.3s ease;
+            width: 16px;
+            text-align: center;
+        }
+
+        .category-header.collapsed .category-arrow {
+            transform: rotate(-90deg);
+        }
+        
+        .category-header:hover {
+            background-color: rgba(255, 152, 0, 0.5);
+        }
+
+        .category-list {
+            list-style: none;
+            margin-left: 20px;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .category-list.collapsed {
+            max-height: 0 !important;
+        }
+        
+        #map-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            cursor: grab;
+        }
+        
+        #map-overlay:active {
+            cursor: grabbing;
+        }
+    </style>
+</head>
+<body>
+    <div id="map-container">
+        <!-- Контейнеры для каждого этажа будут созданы динамически -->
+    </div>
+    
+    <header style="position: absolute; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding-right: 20px;">
+        <h1 style="text-align: center; margin: 0; font-size: 17.5px; width: 300px; background-color: rgba(0, 0, 0, 0.3); color: white; border-radius: 4px; padding: 13px 20px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1);" class="hovered-element">SCP ARC Area-74 v3-1et</h1>
+        <a href="https://steamcommunity.com/id/kkkimber/" target="_blank" style="width: 32px; height: 32px; display: block;">
+            <img src="steam.svg" alt="Author" style="width: 130%; height: 130%; object-fit: contain">
+        </a>
+    </header>
+
+    <div id="locations-panel" class="hovered-element" style="top: 60px; height: calc(100vh - 60px); border-radius: 4px;">
+        <div class="panel-header">
+            <h3 style="margin: 0;">Локации</h3>
+            <button id="toggle-panel" class="toggle-btn">◀</button>
+        </div>
+        <ul id="locations-list">
+            <li class="category-header" data-category="common">
+                <span>Общие помещения</span>
+                <span class="category-arrow">▼</span>
+            </li>
+            <ul class="category-list" data-category="common">
+            </ul>
+            
+            <li class="category-header" data-category="research">
+                <span>Объекты SCP</span>
+                <span class="category-arrow">▼</span>
+            </li>
+            <ul class="category-list" data-category="research">
+                <li data-id="1">SCP-012</li>
+                <li data-id="2">SCP-035</li>
+                <li data-id="3">SCP-049</li>
+                <li data-id="4">SCP-066</li>
+                <li data-id="5">SCP-096</li>
+                <li data-id="7">SCP-106</li>
+                <li data-id="8">SCP-173</li>
+                <li data-id="9">SCP-294</li>
+                <li data-id="10">SCP-330</li>
+                <li data-id="11">SCP-682</li>
+                <li data-id="12">SCP-797</li>
+                <li data-id="13">SCP-914</li>
+                <li data-id="14">SCP-939</li>
+                <li data-id="15">SCP-966</li>
+                <li data-id="16">SCP-999</li>
+                <li data-id="17">SCP-1025</li>
+            </ul>
+            
+            <li class="category-header" data-category="admin">
+                <span>Административные помещения</span>
+                <span class="category-arrow">▼</span>
+            </li>
+            <ul class="category-list" data-category="admin">
+            </ul>
+        </ul>
+    </div>
+    <div id="collapsed-panel" class="collapsed-panel" style="top: 60px; border-radius: 4px;">
+        <button id="expand-panel" class="toggle-btn">▶</button>
+    </div>
+    
+    <div id="zoom-controls">
+        <button class="zoom-btn" id="zoom-in">+</button>
+        <button class="zoom-btn" id="zoom-out">-</button>
+        <div id="zoom-level" class="zoom-btn">100%</div>
+    </div>
+    
+    <div id="floor-controls" style="top: 50%; transform: translateY(-50%);">
+        <div class="floor-controls-bg"></div>
+        <button class="floor-btn" data-floor="4">4</button>
+        <button class="floor-btn" data-floor="3">3</button>
+        <button class="floor-btn" data-floor="2">2</button>
+        <button class="floor-btn active" data-floor="1">1</button>
+        <button class="floor-btn" data-floor="0">0</button>
+        <button class="floor-btn" data-floor="-1">-1</button>
+        <button class="floor-btn" data-floor="-2">-2</button>
+    </div>
+
+    <div id="coordinates-display" style="position: fixed; bottom: 15px; left: 50%; transform: translateX(-50%); background-color: rgba(0, 0, 0, 0.3); color: white; padding: 8px 16px; border-radius: 4px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); font-family: monospace; z-index: 100;">
+        X: 0, Y: 0
+    </div>
+
+    <script>
+        // Data
+        const floors = [
+            { id: -2, name: "-2", viewBox: "0 0 1000 1000" },
+            { id: -1, name: "-1", viewBox: "0 0 1000 1000" },
+            { id: 0, name: "0", viewBox: "0 0 1000 1000" },
+            { id: 1, name: "1", viewBox: "0 0 1000 1000" },
+            { id: 2, name: "2", viewBox: "0 0 1000 1000" },
+            { id: 3, name: "3", viewBox: "0 0 1000 1000" },
+            { id: 4, name: "4", viewBox: "0 0 1000 1000" }
+        ];
+        
+        const locations = [
+            { id: 1, name: "SCP-012", floor: 1, coordinates: { x: 418, y: 492 } },
+            { id: 2, name: "SCP-035", floor: -2, coordinates: { x: 193, y: 700 } },
+            { id: 3, name: "SCP-049", floor: 1, coordinates: { x: 664, y: 422 } },
+            { id: 4, name: "SCP-066", floor: 1, coordinates: { x: 545, y: 517 } },
+            { id: 5, name: "SCP-096", floor: 1, coordinates: { x: 706, y: 422 } },
+            { id: 7, name: "SCP-106", floor: 1, coordinates: { x: 584, y: 324 } },
+            { id: 8, name: "SCP-173", floor: 1, coordinates: { x: 420, y: 432 } },
+            { id: 9, name: "SCP-294", floor: 2, coordinates: { x: 610, y: 675 } },
+            { id: 10, name: "SCP-330", floor: 1, coordinates: { x: 523, y: 524 } },
+            { id: 11, name: "SCP-682", floor: 0, coordinates: { x: 196, y: 408 } },
+            { id: 12, name: "SCP-797", floor: 1, coordinates: { x: 312, y: 488 } },
+            { id: 13, name: "SCP-914", floor: 1, coordinates: { x: 373, y: 498 } },
+            { id: 14, name: "SCP-939", floor: 0, coordinates: { x: 123, y: 575 } },
+            { id: 15, name: "SCP-966", floor: 1, coordinates: { x: 572, y: 459 } },
+            { id: 16, name: "SCP-999", floor: 1, coordinates: { x: 481, y: 434 } },
+            { id: 17, name: "SCP-1025", floor: 1, coordinates: { x: 519, y: 511 } },
+        ];
+        
+        // SVG images
+        const svgImages = {
+            '-2': 'maps/map_-2.svg',
+            '-1': 'maps/map_-1.svg', 
+            '0': 'maps/map_0.svg',
+            '1': 'maps/map_1.svg',
+            '2': 'maps/map_2.svg',
+            '3': 'maps/map_3.svg',
+            '4': 'maps/map_4.svg'
+        };
+
+        // State
+        let currentFloor = 1;
+        let currentTransform = {
+            x: 0,
+            y: 0,
+            scale: 1
+        };
+        let isDragging = false;
+        let lastMousePosition = { x: 0, y: 0 };
+        let isAnimating = false;
+        let animationFrameId = null;
+        let containerSize = { width: 0, height: 0 };
+        let activeMarkers = new Map();
+        
+        // DOM Elements
+        const mapContainer = document.getElementById('map-container');
+        const locationsList = document.getElementById('locations-list');
+        const zoomInBtn = document.getElementById('zoom-in');
+        const zoomOutBtn = document.getElementById('zoom-out');
+        const zoomLevel = document.getElementById('zoom-level');
+        const floorBtns = document.querySelectorAll('.floor-btn');
+        
+        // Initialize
+        function init() {
+            // Create floor containers
+            initFloorContainers();
+            
+            // Store initial container size
+            containerSize = {
+                width: mapContainer.clientWidth,
+                height: mapContainer.clientHeight
+            };
+            
+            // Setup category toggles
+            document.querySelectorAll('.category-header').forEach(header => {
+                header.addEventListener('click', () => {
+                    const category = header.dataset.category;
+                    const list = document.querySelector(`.category-list[data-category="${category}"]`);
+                    
+                    header.classList.toggle('collapsed');
+                    list.classList.toggle('collapsed');
+                    
+                    const isCollapsed = header.classList.contains('collapsed');
+                    localStorage.setItem(`category-${category}-collapsed`, isCollapsed);
+                    
+                    if (list.classList.contains('collapsed')) {
+                        list.style.maxHeight = '0';
+                    } else {
+                        list.style.maxHeight = list.scrollHeight + 'px';
+                    }
+                });
+                
+                const category = header.dataset.category;
+                const list = document.querySelector(`.category-list[data-category="${category}"]`);
+                const wasCollapsed = localStorage.getItem(`category-${category}-collapsed`) === 'true';
+                
+                if (wasCollapsed) {
+                    header.classList.add('collapsed');
+                    list.classList.add('collapsed');
+                    list.style.maxHeight = '0';
+                } else {
+                    list.style.maxHeight = list.scrollHeight + 'px';
+                }
+            });
+
+            // Setup location click handlers
+            document.querySelectorAll('#locations-list li[data-id]').forEach(li => {
+                li.addEventListener('click', () => navigateToLocation(parseInt(li.dataset.id)));
+            });
+            
+            // Event listeners for zoom controls
+            zoomInBtn.addEventListener('click', () => zoom(1));
+            zoomOutBtn.addEventListener('click', () => zoom(-1));
+            
+            // Event listeners for floor controls
+            floorBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const floor = parseInt(btn.dataset.floor);
+                    if (floor !== currentFloor) {
+                        currentFloor = floor;
+                        loadFloor(floor);
+                        
+                        floorBtns.forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                    }
+                });
+            });
+            
+            // Map dragging events
+            const mapOverlay = document.getElementById('map-overlay');
+            const coordinatesDisplay = document.getElementById('coordinates-display');
+            
+            mapOverlay.addEventListener('mousemove', (e) => {
+                if (isAnimating) return;
+                
+                const rect = mapContainer.getBoundingClientRect();
+                const mouseX = e.clientX - rect.left;
+                const mouseY = e.clientY - rect.top;
+                
+                // Calculate coordinates in SVG coordinate system
+                const currentSvg = document.querySelector(`.floor-container[data-floor="${currentFloor}"] svg`);
+                if (!currentSvg) return;
+                
+                const pt = currentSvg.createSVGPoint();
+                pt.x = mouseX;
+                pt.y = mouseY;
+                const svgP = pt.matrixTransform(currentSvg.getScreenCTM().inverse());
+                
+                coordinatesDisplay.textContent = `X: ${Math.round(svgP.x)}, Y: ${Math.round(svgP.y)}`;
+            });
+
+            mapOverlay.addEventListener('mousedown', (e) => {
+                if (isAnimating) return;
+                e.preventDefault();
+                startDrag(e);
+            });
+            document.addEventListener('mousemove', drag);
+            document.addEventListener('mouseup', endDrag);
+            document.addEventListener('mouseleave', () => {
+                endDrag();
+                coordinatesDisplay.textContent = 'X: 0, Y: 0';
+            });
+            
+            // Zoom with mouse wheel
+            mapContainer.addEventListener('wheel', handleWheel, { passive: false });
+            
+            // Update zoom level display
+            zoomLevel.textContent = `${Math.round(currentTransform.scale * 100)}%`;
+            
+            // Handle window resize
+            window.addEventListener('resize', handleResize);
+        }
+        
+        // Handle window resize
+        function handleResize() {
+            if (isAnimating) return;
+            
+            const newWidth = mapContainer.clientWidth;
+            const newHeight = mapContainer.clientHeight;
+            
+            if (newWidth === containerSize.width && newHeight === containerSize.height) {
+                return;
+            }
+            
+            containerSize = { width: newWidth, height: newHeight };
+            applyTransform();
+        }
+        
+        // Create floor containers with inline SVG
+        function initFloorContainers() {
+            mapContainer.innerHTML = '';
+            
+            Object.keys(svgImages).forEach(floor => {
+                const container = document.createElement('div');
+                container.className = 'floor-container';
+                container.dataset.floor = floor;
+                container.style.position = 'absolute';
+                container.style.top = '0';
+                container.style.left = '0';
+                container.style.width = '100%';
+                container.style.height = '100%';
+                container.style.display = 'none';
+                
+                const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                svg.classList.add('floor-svg');
+                svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+                
+                // Set viewBox based on floor data
+                const floorData = floors.find(f => f.id.toString() === floor);
+                if (floorData && floorData.viewBox) {
+                    svg.setAttribute('viewBox', floorData.viewBox);
+                }
+                
+                // Load SVG content
+                const image = document.createElementNS('http://www.w3.org/2000/svg', 'image');
+                image.setAttribute('href', svgImages[floor]);
+                image.setAttribute('width', '100%');
+                image.setAttribute('height', '100%');
+                image.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+                
+                svg.appendChild(image);
+                container.appendChild(svg);
+                mapContainer.appendChild(container);
+            });
+            
+            // Add overlay
+            const overlay = document.createElement('div');
+            overlay.id = 'map-overlay';
+            overlay.style.position = 'absolute';
+            overlay.style.top = '0';
+            overlay.style.left = '0';
+            overlay.style.width = '100%';
+            overlay.style.height = '100%';
+            overlay.style.zIndex = '10';
+            mapContainer.appendChild(overlay);
+            
+            // Show default floor
+            showFloor(currentFloor);
+        }
+
+        // Show temporary marker at location
+        function showTemporaryMarker(location) {
+            // Remove existing marker for this location
+            removeTemporaryMarker(location.id);
+            
+            const floorContainer = document.querySelector(`.floor-container[data-floor="${location.floor}"]`);
+            if (!floorContainer) return;
+            
+            const svg = floorContainer.querySelector('svg');
+            if (!svg) return;
+            
+            // Create marker group
+            const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+            g.setAttribute('class', 'location-marker-group temporary');
+            g.setAttribute('data-location-id', location.id);
+            
+            // Calculate marker size based on current zoom scale
+            const baseSize = 10; // Base size at 100% zoom
+            const currentSize = baseSize / currentTransform.scale;
+            const minSize = 3; // Minimum size to prevent markers from becoming too small
+            const maxSize = 20; // Maximum size to prevent markers from becoming too large
+            const markerSize = Math.max(minSize, Math.min(maxSize, currentSize));
+            
+            // Calculate text offset based on marker size
+            const textOffset = markerSize + 5;
+            
+            // Create circle marker with dynamic size
+            const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            circle.setAttribute('class', 'location-marker');
+            circle.setAttribute('cx', location.coordinates.x);
+            circle.setAttribute('cy', location.coordinates.y);
+            circle.setAttribute('r', markerSize);
+            
+            // Create text label with dynamic positioning
+            const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            text.setAttribute('class', 'location-marker-text');
+            text.setAttribute('x', location.coordinates.x);
+            text.setAttribute('y', location.coordinates.y - textOffset);
+            text.textContent = location.name;
+            
+            // Store marker data for later updates
+            g.markerData = {
+                baseSize: baseSize,
+                minSize: minSize,
+                maxSize: maxSize,
+                textOffset: 5 // Base offset
+            };
+            
+            g.appendChild(circle);
+            g.appendChild(text);
+            svg.appendChild(g);
+            
+            // Set timer to remove marker after 5 seconds
+            const timer = setTimeout(() => {
+                removeTemporaryMarker(location.id);
+            }, 5000);
+            
+            // Store marker and timer
+            activeMarkers.set(location.id, { element: g, timer });
+        }
+
+        // Update marker sizes based on current zoom level
+        function updateMarkerSizes() {
+            for (const [locationId, marker] of activeMarkers.entries()) {
+                const circle = marker.element.querySelector('circle');
+                const text = marker.element.querySelector('text');
+                
+                if (circle && text && marker.element.markerData) {
+                    const baseSize = marker.element.markerData.baseSize;
+                    const minSize = marker.element.markerData.minSize;
+                    const maxSize = marker.element.markerData.maxSize;
+                    const baseOffset = marker.element.markerData.textOffset;
+                    
+                    // Calculate new size based on current zoom
+                    const currentSize = baseSize / currentTransform.scale;
+                    const markerSize = Math.max(minSize, Math.min(maxSize, currentSize));
+                    const textOffset = markerSize + baseOffset;
+                    
+                    // Update circle size
+                    circle.setAttribute('r', markerSize);
+                    
+                    // Update text position
+                    const cy = parseFloat(circle.getAttribute('cy'));
+                    text.setAttribute('y', cy - textOffset);
+                }
+            }
+        }
+        
+        
+        // Remove temporary marker
+        function removeTemporaryMarker(locationId) {
+            if (activeMarkers.has(locationId)) {
+                const marker = activeMarkers.get(locationId);
+                clearTimeout(marker.timer);
+                if (marker.element && marker.element.parentNode) {
+                    marker.element.parentNode.removeChild(marker.element);
+                }
+                activeMarkers.delete(locationId);
+            }
+        }
+        
+        // Remove all temporary markers
+        function removeAllTemporaryMarkers() {
+            for (const [locationId, marker] of activeMarkers.entries()) {
+                clearTimeout(marker.timer);
+                if (marker.element && marker.element.parentNode) {
+                    marker.element.parentNode.removeChild(marker.element);
+                }
+            }
+            activeMarkers.clear();
+        }
+
+        // Show specific floor
+        function showFloor(floor) {
+            const containers = document.querySelectorAll('.floor-container');
+            containers.forEach(container => {
+                container.style.display = container.dataset.floor === floor.toString() ? 'block' : 'none';
+            });
+            
+            applyTransform();
+        }
+
+        // Load floor
+        function loadFloor(floor) {
+            // Remove all temporary markers when switching floors
+            removeAllTemporaryMarkers();
+            showFloor(floor);
+        }
+        
+        // Navigation to location with smooth animation
+        function navigateToLocation(locationId) {
+            if (isAnimating) return;
+            
+            const location = locations.find(l => l.id === locationId);
+            if (!location) return;
+            
+            // Switch floor if needed first
+            if (location.floor !== currentFloor) {
+                currentFloor = location.floor;
+                loadFloor(currentFloor);
+                
+                floorBtns.forEach(b => {
+                    b.classList.toggle('active', parseInt(b.dataset.floor) === currentFloor);
+                });
+            }
+            
+            // Show temporary marker after floor is loaded
+            setTimeout(() => {
+                showTemporaryMarker(location);
+            }, 50);
+            
+            // Wait for floor to load before calculating position
+            setTimeout(() => {
+                // Calculate target scale and position using matrix transformations
+                const targetScale = 3; // 300% zoom
+            const containerWidth = mapContainer.clientWidth;
+            const containerHeight = mapContainer.clientHeight;
+            
+            // Get the current SVG element
+            const currentSvg = document.querySelector(`.floor-container[data-floor="${currentFloor}"] svg`);
+            if (!currentSvg) return;
+            
+            // Create a point in SVG coordinates
+            const svgPoint = currentSvg.createSVGPoint();
+            svgPoint.x = location.coordinates.x;
+            svgPoint.y = location.coordinates.y;
+            
+            // Create a temporary matrix for the target scale
+            // We need to calculate where the point would be at the target scale
+            const tempMatrix = currentSvg.getScreenCTM();
+            const inverseMatrix = tempMatrix.inverse();
+            
+            // Calculate the screen position of the point at target scale
+            // First, reset transformations to calculate base position
+            const originalTransform = currentSvg.style.transform;
+            currentSvg.style.transform = `scale(${targetScale})`;
+            
+            // Get the new transformation matrix
+            const newMatrix = currentSvg.getScreenCTM();
+            
+            // Transform the SVG point to screen coordinates
+            const screenPoint = svgPoint.matrixTransform(newMatrix);
+            
+            // Restore original transform
+            currentSvg.style.transform = originalTransform;
+            
+            // Calculate target position to center the location
+            const targetX = (containerWidth / 2) - screenPoint.x;
+            const targetY = (containerHeight / 2) - screenPoint.y;
+            
+                // Start animation
+                animateNavigation(targetX, targetY, targetScale);
+            }, 100);
+        }
+        
+        // Animate navigation
+        function animateNavigation(targetX, targetY, targetScale) {
+            isAnimating = true;
+            
+            const startX = currentTransform.x;
+            const startY = currentTransform.y;
+            const startScale = currentTransform.scale;
+            
+            const startTime = performance.now();
+            const duration = 1000;
+            
+            function step(timestamp) {
+                if (!isAnimating) return;
+                
+                const elapsed = timestamp - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                const easeProgress = easeInOutCubic(progress);
+                
+                currentTransform.x = startX + (targetX - startX) * easeProgress;
+                currentTransform.y = startY + (targetY - startY) * easeProgress;
+                currentTransform.scale = startScale + (targetScale - startScale) * easeProgress;
+                
+                applyTransform();
+                zoomLevel.textContent = `${Math.round(currentTransform.scale * 100)}%`;
+
+                // Update marker sizes after zoom
+                updateMarkerSizes();
+                
+                if (progress < 1) {
+                    animationFrameId = requestAnimationFrame(step);
+                } else {
+                    isAnimating = false;
+                    animationFrameId = null;
+                }
+            }
+            
+            animationFrameId = requestAnimationFrame(step);
+        }
+        
+        // Easing function
+        function easeInOutCubic(t) {
+            return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+        }
+        
+        // Zoom functions
+        function zoom(direction) {
+            if (isAnimating) return;
+            
+            const step = 0.1;
+            let newScale = currentTransform.scale + (direction * step);
+            
+            // Limit zoom range (0.1-6.0)
+            newScale = Math.max(0.1, Math.min(6.0, newScale));
+            
+            // Get center of the viewport for zooming
+            const containerWidth = mapContainer.clientWidth;
+            const containerHeight = mapContainer.clientHeight;
+            const zoomCenter = { x: containerWidth / 2, y: containerHeight / 2 };
+            
+            // Calculate the point to zoom toward (center of viewport)
+            const scaleFactor = newScale / currentTransform.scale;
+            
+            // Adjust position to maintain the center point
+            currentTransform.x = zoomCenter.x - (zoomCenter.x - currentTransform.x) * scaleFactor;
+            currentTransform.y = zoomCenter.y - (zoomCenter.y - currentTransform.y) * scaleFactor;
+            
+            currentTransform.scale = newScale;
+            
+            applyTransform();
+            zoomLevel.textContent = `${Math.round(newScale * 100)}%`;
+           
+            // Update marker sizes after zoom
+             updateMarkerSizes();
+        }
+        
+        function handleWheel(e) {
+            if (isAnimating) return;
+            
+            e.preventDefault();
+            
+            const direction = e.deltaY < 0 ? 1 : -1;
+            const step = 0.1;
+            let newScale = currentTransform.scale + (direction * step);
+            
+            newScale = Math.max(0.1, Math.min(6.0, newScale));
+            
+            // Get mouse position
+            const rect = mapContainer.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+            
+            // Calculate the point to zoom toward
+            const scaleFactor = newScale / currentTransform.scale;
+            
+            // Adjust position to zoom toward mouse
+            currentTransform.x = mouseX - (mouseX - currentTransform.x) * scaleFactor;
+            currentTransform.y = mouseY - (mouseY - currentTransform.y) * scaleFactor;
+            
+            currentTransform.scale = newScale;
+            
+            applyTransform();
+            zoomLevel.textContent = `${Math.round(newScale * 100)}%`;
+
+            // Update marker sizes after zoom
+             updateMarkerSizes();
+        }
+        
+        // Dragging functions
+        function startDrag(e) {
+            if (isAnimating) return;
+            if (e.button !== 0) return;
+            isDragging = true;
+            lastMousePosition = { x: e.clientX, y: e.clientY };
+            document.getElementById('map-overlay').style.cursor = 'grabbing';
+        }
+        
+        function drag(e) {
+            if (!isDragging || isAnimating) return;
+            
+            const dx = e.clientX - lastMousePosition.x;
+            const dy = e.clientY - lastMousePosition.y;
+            
+            currentTransform.x += dx;
+            currentTransform.y += dy;
+            
+            applyTransform();
+            
+            lastMousePosition = { x: e.clientX, y: e.clientY };
+        }
+        
+        function endDrag() {
+            isDragging = false;
+            document.getElementById('map-overlay').style.cursor = 'grab';
+        }
+        
+        // Apply current transform to SVG
+        function applyTransform() {
+            const containers = document.querySelectorAll('.floor-container');
+            containers.forEach(container => {
+                const svg = container.querySelector('svg');
+                if (svg) {
+                    svg.style.transform = `translate(${currentTransform.x}px, ${currentTransform.y}px) scale(${currentTransform.scale})`;
+                    svg.style.transformOrigin = '0 0';
+                }
+            });
+        }
+        
+        // Toggle panel visibility
+        const togglePanelBtn = document.getElementById('toggle-panel');
+        const expandPanelBtn = document.getElementById('expand-panel');
+        
+        togglePanelBtn.addEventListener('click', () => {
+            document.getElementById('locations-panel').classList.toggle('collapsed');
+        });
+        
+        expandPanelBtn.addEventListener('click', () => {
+            document.getElementById('locations-panel').classList.remove('collapsed');
+        });
+
+        // Initialize the app
+        window.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
