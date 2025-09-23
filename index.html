@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Карта SCP ARC Area-74 v3-1et</title>
+    <title>SCP ARC Area-74 v3-1et</title>
+    <link rel="icon" href="site-logo.png" type="image/x-icon">
     <style>
         * {
             margin: 0;
@@ -246,24 +247,70 @@
             font-weight: bold;
         }
         
+        /* Новый стиль для SVG меток */
         .location-marker {
-            fill: red;
-            r: 10;
-            animation: pulse 2s infinite;
-            pointer-events: none;
+            fill: #fa005a;
+            stroke: white;
+            /* stroke-width теперь задается динамически */
+            filter: drop-shadow(0 0 10px rgba(250, 0, 90, 0.7));
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        
+        .location-marker:hover {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 15px rgba(250, 0, 90, 1));
         }
         
         .location-marker-text {
             fill: white;
             font-size: 12px;
             text-anchor: middle;
-            pointer-events: none;
             font-weight: bold;
             paint-order: stroke;
             stroke: #000;
             stroke-width: 3px;
             stroke-linecap: round;
             stroke-linejoin: round;
+            pointer-events: none;
+            transition: all 0.2s ease;
+        }
+        
+        .location-marker-group:hover .location-marker-text {
+            transform: translateY(-5px);
+        }
+
+        .marker-popup {
+            fill: rgba(0, 0, 0, 0.9);
+            stroke: rgba(255, 255, 255, 0.2);
+            stroke-width: 1;
+            rx: 6;
+            ry: 6;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.7));
+        }
+        
+        .marker-popup-text {
+            fill: white;
+            font-size: 12px;
+            pointer-events: none;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .marker-popup-title {
+            font-weight: bold;
+            fill: #fa005a;
+            font-size: 14px;
+        }
+        
+        .marker-popup-desc {
+            font-size: 11px;
+            fill: #cccccc;
+        }
+        
+        .marker-popup-arrow {
+            fill: rgba(0, 0, 0, 0.9);
+            stroke: rgba(255, 255, 255, 0.2);
+            stroke-width: 1;
         }
         
         @keyframes pulse {
@@ -353,6 +400,31 @@
                 <span class="category-arrow">▼</span>
             </li>
             <ul class="category-list" data-category="common">
+                <li data-id="18">D-Блок</li>
+                <li data-id="19">Карцер</li>
+                <li data-id="20">Кабинет НСБ</li>
+                <li data-id="21">Центр переподготовки</li>
+                <li data-id="22">Шелтер LCZ</li>
+                <li data-id="23">Шелтер ТГ</li>
+                <li data-id="24">Шелтер ГП</li>
+                <li data-id="25">Казармы СБ</li>
+                <li data-id="26">Казармы ТГ</li>
+                <li data-id="27">Кабинет ДЗ</li>
+                <li data-id="28">Комната допроса</li>
+                <li data-id="29">Чекпоинт LCZ - HCZ-A №1</li>
+                <li data-id="30">Чекпоинт LCZ - HCZ-A №2</li>
+                <li data-id="31">Чекпоинт LCZ - Офисы</li>
+                <li data-id="32">Чекпоинт LCZ - HCZ-B</li>
+                <li data-id="33">Чекпоинт Офисы - HCZ-B</li>
+                <li data-id="34">Чекпоинт HCZ-A - Офисы</li>
+                <li data-id="35">Зона отдыха</li>
+                <li data-id="36">Кабинет ГП</li>
+                <li data-id="37">Кофитерий</li>
+                <li data-id="38">Склад</li>
+                <li data-id="39">Комната ШПХ</li>
+                <li data-id="40">Gate-A</li>
+                <li data-id="41">Gate-B</li>
+
             </ul>
             
             <li class="category-header" data-category="research">
@@ -378,10 +450,10 @@
                 <li data-id="17">SCP-1025</li>
             </ul>
             
-            <li class="category-header" data-category="admin">
+            <!--<li class="category-header" data-category="admin">
                 <span>Административные помещения</span>
                 <span class="category-arrow">▼</span>
-            </li>
+            </li> -->
             <ul class="category-list" data-category="admin">
             </ul>
         </ul>
@@ -424,22 +496,46 @@
         ];
         
         const locations = [
-            { id: 1, name: "SCP-012", floor: 1, coordinates: { x: 418, y: 492 } },
-            { id: 2, name: "SCP-035", floor: -2, coordinates: { x: 193, y: 700 } },
-            { id: 3, name: "SCP-049", floor: 1, coordinates: { x: 664, y: 422 } },
-            { id: 4, name: "SCP-066", floor: 1, coordinates: { x: 545, y: 517 } },
-            { id: 5, name: "SCP-096", floor: 1, coordinates: { x: 706, y: 422 } },
-            { id: 7, name: "SCP-106", floor: 1, coordinates: { x: 584, y: 324 } },
-            { id: 8, name: "SCP-173", floor: 1, coordinates: { x: 420, y: 432 } },
-            { id: 9, name: "SCP-294", floor: 2, coordinates: { x: 610, y: 675 } },
-            { id: 10, name: "SCP-330", floor: 1, coordinates: { x: 523, y: 524 } },
-            { id: 11, name: "SCP-682", floor: 0, coordinates: { x: 196, y: 408 } },
-            { id: 12, name: "SCP-797", floor: 1, coordinates: { x: 312, y: 488 } },
-            { id: 13, name: "SCP-914", floor: 1, coordinates: { x: 373, y: 498 } },
-            { id: 14, name: "SCP-939", floor: 0, coordinates: { x: 123, y: 575 } },
-            { id: 15, name: "SCP-966", floor: 1, coordinates: { x: 572, y: 459 } },
-            { id: 16, name: "SCP-999", floor: 1, coordinates: { x: 481, y: 434 } },
-            { id: 17, name: "SCP-1025", floor: 1, coordinates: { x: 519, y: 511 } },
+            { id: 1, name: "SCP-012", floor: 1, coordinates: { x: 417.5, y: 492 }, description: "Партитура до совершенства" },
+            { id: 2, name: "SCP-035", floor: -2, coordinates: { x: 193.5, y: 698.5 }, description: "Маска одержимости" },
+            { id: 3, name: "SCP-049", floor: 1, coordinates: { x: 664, y: 422 }, description: "Чумной доктор" },
+            { id: 4, name: "SCP-066", floor: 1, coordinates: { x: 545, y: 517 }, description: "Игрушка эрика" },
+            { id: 5, name: "SCP-096", floor: 1, coordinates: { x: 706.5, y: 441.5 }, description: "Скромник" },
+            { id: 7, name: "SCP-106", floor: 1, coordinates: { x: 584, y: 324 }, description: "Старик" },
+            { id: 8, name: "SCP-173", floor: 1, coordinates: { x: 419.5, y: 432 }, description: "Скульптура" },
+            { id: 9, name: "SCP-294", floor: 2, coordinates: { x: 610, y: 675 }, description: "Кофейный автомат" },
+            { id: 10, name: "SCP-330", floor: 1, coordinates: { x: 523, y: 524 }, description: "Конфетница" },
+            { id: 11, name: "SCP-682", floor: 0, coordinates: { x: 196, y: 407.5 }, description: "Неуязвимая рептилия" },
+            { id: 12, name: "SCP-797", floor: 1, coordinates: { x: 312.5, y: 488 }, description: "Любопытный полтергейст" },
+            { id: 13, name: "SCP-914", floor: 1, coordinates: { x: 372.5, y: 498 }, description: "Часовой механизм" },
+            { id: 14, name: "SCP-939", floor: 0, coordinates: { x: 123, y: 575 }, description: "С криком" },
+            { id: 15, name: "SCP-966", floor: 1, coordinates: { x: 572, y: 459 }, description: "Безсонники" },
+            { id: 16, name: "SCP-999", floor: 1, coordinates: { x: 481, y: 433.5 }, description: "Живая масса оранжевой слизи" },
+            { id: 17, name: "SCP-1025", floor: 1, coordinates: { x: 518.5, y: 511 }, description: "Энциклопедия болезней" },
+            { id: 18, name: "D-Блок", floor: 1, coordinates: { x: 393, y: 320 }, description: " " },
+            { id: 19, name: "Карцер", floor: 1, coordinates: { x: 430, y: 343 }, description: " " },
+            { id: 20, name: "Кабинет НСБ", floor: 2, coordinates: { x: 384, y: 366 }, description: " " },
+            { id: 21, name: "Центр переподготовки", floor: 3, coordinates: { x: 426, y: 352 }, description: "СБ-3-2" },
+            { id: 22, name: "Шелтер LCZ", floor: 1, coordinates: { x: 369, y: 397 }, description: " " },
+            { id: 23, name: "Шелтер ТГ", floor: 1, coordinates: { x: 531, y: 557 }, description: " " },
+            { id: 24, name: "Шелтер ГП", floor: 2, coordinates: { x: 509, y: 694 }, description: " " },
+            { id: 25, name: "Казармы СБ", floor: 1, coordinates: { x: 377, y: 466 }, description: " " },
+            { id: 26, name: "Казармы ТГ", floor: 1, coordinates: { x: 544, y: 560 }, description: " " },
+            { id: 27, name: "Кабинет ДЗ", floor: 1, coordinates: { x: 560, y: 659 }, description: " " },
+            { id: 28, name: "Комната допроса", floor: 1, coordinates: { x: 583, y: 586 }, description: " " },
+            { id: 29, name: "Чекпоинт LCZ - HCZ-A №1", floor: 1, coordinates: { x: 292, y: 442 }, description: " " },
+            { id: 30, name: "Чекпоинт LCZ - HCZ-A №2", floor: 1, coordinates: { x: 349, y: 499 }, description: " " },
+            { id: 31, name: "Чекпоинт LCZ - Офисы", floor: 1, coordinates: { x: 462, y: 536 }, description: "Быстрый чекпоинт" },
+            { id: 32, name: "Чекпоинт LCZ - HCZ-B", floor: 1, coordinates: { x: 559, y: 479 }, description: " " },
+            { id: 33, name: "Чекпоинт Офисы - HCZ-B", floor: 1, coordinates: { x: 559, y: 555 }, description: " " },
+            { id: 34, name: "Чекпоинт HCZ-A - Офисы", floor: 1, coordinates: { x: 443, y: 631 }, description: " " },
+            { id: 35, name: "Зона отдыха", floor: 1, coordinates: { x: 537, y: 712 }, description: " " },
+            { id: 36, name: "Кабинет ГП", floor: 2, coordinates: { x: 537, y: 697 }, description: " " },
+            { id: 37, name: "Кофитерий", floor: 2, coordinates: { x: 607, y: 655 }, description: " " },
+            { id: 38, name: "Склад", floor: -1, coordinates: { x: 559, y: 538 }, description: " " },
+            { id: 39, name: "Комната ШПХ", floor: -2, coordinates: { x: 583, y: 447 }, description: " " },
+            { id: 40, name: "Gate-A", floor: 3, coordinates: { x: 722, y: 644 }, description: " " },
+            { id: 41, name: "Gate-B", floor: -1, coordinates: { x: 409, y: 684 }, description: " " },
         ];
         
         // SVG images
@@ -466,6 +562,7 @@
         let animationFrameId = null;
         let containerSize = { width: 0, height: 0 };
         let activeMarkers = new Map();
+        let activePopup = null;
         
         // DOM Elements
         const mapContainer = document.getElementById('map-container');
@@ -670,39 +767,52 @@
             g.setAttribute('data-location-id', location.id);
             
             // Calculate marker size based on current zoom scale
-            const baseSize = 10; // Base size at 100% zoom
+            const baseSize = 8; // Base size at 100% zoom
             const currentSize = baseSize / currentTransform.scale;
-            const minSize = 3; // Minimum size to prevent markers from becoming too small
-            const maxSize = 20; // Maximum size to prevent markers from becoming too large
+            const minSize = 2; // Minimum size to prevent markers from becoming too small
+            const maxSize = 30; // Increased maximum size to prevent markers from becoming too small at high zoom
             const markerSize = Math.max(minSize, Math.min(maxSize, currentSize));
             
-            // Calculate text offset based on marker size
-            const textOffset = markerSize + 5;
+            // Calculate proportional stroke width (25% of radius, minimum 1)
+            const strokeWidth = Math.max(1, markerSize * 0.25);
             
-            // Create circle marker with dynamic size
+            // Calculate text offset based on marker size
+            const textOffset = markerSize + 8;
+            
+            // Create circle marker with proportional stroke
             const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
             circle.setAttribute('class', 'location-marker');
             circle.setAttribute('cx', location.coordinates.x);
             circle.setAttribute('cy', location.coordinates.y);
             circle.setAttribute('r', markerSize);
+            circle.setAttribute('stroke-width', strokeWidth);
+
+            // Add hover effects
+            g.addEventListener('mouseover', function() {
+                circle.setAttribute('filter', 'drop-shadow(0 0 15px rgba(250, 0, 90, 1))');
+                circle.style.transform = 'scale(1.2)';
+            });
             
-            // Create text label with dynamic positioning
-            const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-            text.setAttribute('class', 'location-marker-text');
-            text.setAttribute('x', location.coordinates.x);
-            text.setAttribute('y', location.coordinates.y - textOffset);
-            text.textContent = location.name;
+            g.addEventListener('mouseout', function() {
+                circle.setAttribute('filter', 'drop-shadow(0 0 10px rgba(250, 0, 90, 0.7))');
+                circle.style.transform = 'scale(1)';
+            });
+            
+            // Add click event to show popup
+            g.addEventListener('click', function(e) {
+                e.stopPropagation();
+                showMarkerPopup(location, g);
+            });
             
             // Store marker data for later updates
             g.markerData = {
                 baseSize: baseSize,
                 minSize: minSize,
                 maxSize: maxSize,
-                textOffset: 5 // Base offset
+                textOffset: 8 // Base offset
             };
             
             g.appendChild(circle);
-            g.appendChild(text);
             svg.appendChild(g);
             
             // Set timer to remove marker after 5 seconds
@@ -714,13 +824,109 @@
             activeMarkers.set(location.id, { element: g, timer });
         }
 
+        // Show popup for marker
+        function showMarkerPopup(location, markerGroup) {
+            // Remove existing popup
+            if (activePopup) {
+                activePopup.remove();
+                activePopup = null;
+            }
+            
+            const svg = markerGroup.ownerSVGElement;
+            if (!svg) return;
+            
+            // Get marker position
+            const circle = markerGroup.querySelector('circle');
+            const cx = parseFloat(circle.getAttribute('cx'));
+            const cy = parseFloat(circle.getAttribute('cy'));
+            const r = parseFloat(circle.getAttribute('r'));
+            
+            // Create popup group
+            const popupGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+            popupGroup.setAttribute('class', 'marker-popup-group');
+            
+            // Create popup background
+            const popupBg = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+            popupBg.setAttribute('class', 'marker-popup');
+            
+            // Create popup text
+            const popupText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            popupText.setAttribute('class', 'marker-popup-text');
+            
+            // Create title
+            const title = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
+            title.setAttribute('class', 'marker-popup-title');
+            title.setAttribute('x', 0);
+            title.setAttribute('dy', '1.2em');
+            title.textContent = location.name;
+            
+            // Create description
+            const description = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
+            description.setAttribute('class', 'marker-popup-desc');
+            description.setAttribute('x', 0);
+            description.setAttribute('dy', '1.2em');
+            description.textContent = location.description || `Этаж: ${location.floor}`;
+            
+            // Create floor info
+            const floorInfo = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
+            floorInfo.setAttribute('class', 'marker-popup-desc');
+            floorInfo.setAttribute('x', 0);
+            floorInfo.setAttribute('dy', '1.2em');
+            floorInfo.textContent = `Этаж: ${location.floor}`;
+            
+            popupText.appendChild(title);
+            popupText.appendChild(description);
+            popupText.appendChild(floorInfo);
+            
+            // Calculate text dimensions
+            const textBBox = popupText.getBBox();
+            const padding = 10;
+            const popupWidth = Math.max(150, textBBox.width + padding * 2);
+            const popupHeight = textBBox.height + padding * 2;
+            
+            // Position popup above marker
+            const popupX = cx - popupWidth / 2;
+            const popupY = cy - r - popupHeight - 15;
+            
+            // Set popup background
+            popupBg.setAttribute('x', popupX);
+            popupBg.setAttribute('y', popupY);
+            popupBg.setAttribute('width', popupWidth);
+            popupBg.setAttribute('height', popupHeight);
+            
+            // Set text position
+            popupText.setAttribute('x', popupX + padding);
+            popupText.setAttribute('y', popupY + padding);
+            
+            // Create arrow
+            const arrow = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            arrow.setAttribute('class', 'marker-popup-arrow');
+            arrow.setAttribute('d', `M ${cx - 8} ${cy - r} L ${cx} ${cy - r - 8} L ${cx + 8} ${cy - r} Z`);
+            
+            popupGroup.appendChild(popupBg);
+            popupGroup.appendChild(popupText);
+            popupGroup.appendChild(arrow);
+            svg.appendChild(popupGroup);
+            
+            activePopup = popupGroup;
+            
+            // Close popup when clicking elsewhere
+            const closePopup = function(e) {
+                if (!popupGroup.contains(e.target) && !markerGroup.contains(e.target)) {
+                    popupGroup.remove();
+                    activePopup = null;
+                    document.removeEventListener('click', closePopup);
+                }
+            };
+            
+            setTimeout(() => document.addEventListener('click', closePopup), 10);
+        }
+
         // Update marker sizes based on current zoom level
         function updateMarkerSizes() {
             for (const [locationId, marker] of activeMarkers.entries()) {
                 const circle = marker.element.querySelector('circle');
-                const text = marker.element.querySelector('text');
-                
-                if (circle && text && marker.element.markerData) {
+                if (circle && marker.element.markerData) {
                     const baseSize = marker.element.markerData.baseSize;
                     const minSize = marker.element.markerData.minSize;
                     const maxSize = marker.element.markerData.maxSize;
@@ -729,18 +935,17 @@
                     // Calculate new size based on current zoom
                     const currentSize = baseSize / currentTransform.scale;
                     const markerSize = Math.max(minSize, Math.min(maxSize, currentSize));
-                    const textOffset = markerSize + baseOffset;
                     
-                    // Update circle size
+                    // Calculate proportional stroke width (25% of radius, minimum 1)
+                    const strokeWidth = Math.max(0.1, markerSize * 0.15);
+                    
+                    // Update circle size and stroke
                     circle.setAttribute('r', markerSize);
+                    circle.setAttribute('stroke-width', strokeWidth);
                     
-                    // Update text position
-                    const cy = parseFloat(circle.getAttribute('cy'));
-                    text.setAttribute('y', cy - textOffset);
                 }
             }
         }
-        
         
         // Remove temporary marker
         function removeTemporaryMarker(locationId) {
@@ -751,6 +956,12 @@
                     marker.element.parentNode.removeChild(marker.element);
                 }
                 activeMarkers.delete(locationId);
+            }
+            
+            // Remove popup if it exists
+            if (activePopup) {
+                activePopup.remove();
+                activePopup = null;
             }
         }
         
@@ -763,6 +974,12 @@
                 }
             }
             activeMarkers.clear();
+            
+            // Remove popup if it exists
+            if (activePopup) {
+                activePopup.remove();
+                activePopup = null;
+            }
         }
 
         // Show specific floor
@@ -807,44 +1024,57 @@
             // Wait for floor to load before calculating position
             setTimeout(() => {
                 // Calculate target scale and position using matrix transformations
-                const targetScale = 3; // 300% zoom
-            const containerWidth = mapContainer.clientWidth;
-            const containerHeight = mapContainer.clientHeight;
-            
-            // Get the current SVG element
-            const currentSvg = document.querySelector(`.floor-container[data-floor="${currentFloor}"] svg`);
-            if (!currentSvg) return;
-            
-            // Create a point in SVG coordinates
-            const svgPoint = currentSvg.createSVGPoint();
-            svgPoint.x = location.coordinates.x;
-            svgPoint.y = location.coordinates.y;
-            
-            // Create a temporary matrix for the target scale
-            // We need to calculate where the point would be at the target scale
-            const tempMatrix = currentSvg.getScreenCTM();
-            const inverseMatrix = tempMatrix.inverse();
-            
-            // Calculate the screen position of the point at target scale
-            // First, reset transformations to calculate base position
-            const originalTransform = currentSvg.style.transform;
-            currentSvg.style.transform = `scale(${targetScale})`;
-            
-            // Get the new transformation matrix
-            const newMatrix = currentSvg.getScreenCTM();
-            
-            // Transform the SVG point to screen coordinates
-            const screenPoint = svgPoint.matrixTransform(newMatrix);
-            
-            // Restore original transform
-            currentSvg.style.transform = originalTransform;
-            
-            // Calculate target position to center the location
-            const targetX = (containerWidth / 2) - screenPoint.x;
-            const targetY = (containerHeight / 2) - screenPoint.y;
-            
-                // Start animation
-                animateNavigation(targetX, targetY, targetScale);
+                const targetScale = 6; // Increased to 600% zoom
+                const containerWidth = mapContainer.clientWidth;
+                const containerHeight = mapContainer.clientHeight;
+                
+                // Get the current SVG element
+                const currentSvg = document.querySelector(`.floor-container[data-floor="${currentFloor}"] svg`);
+                if (!currentSvg) return;
+                
+                // Create a point in SVG coordinates
+                const svgPoint = currentSvg.createSVGPoint();
+                svgPoint.x = location.coordinates.x;
+                svgPoint.y = location.coordinates.y;
+                
+                // Create a temporary matrix for the target scale
+                // We need to calculate where the point would be at the target scale
+                const tempMatrix = currentSvg.getScreenCTM();
+                const inverseMatrix = tempMatrix.inverse();
+                
+                // Calculate the screen position of the point at target scale
+                // First, reset transformations to calculate base position
+                const originalTransform = currentSvg.style.transform;
+                currentSvg.style.transform = `scale(${targetScale})`;
+                
+                // Get the new transformation matrix
+                const newMatrix = currentSvg.getScreenCTM();
+                
+                // Transform the SVG point to screen coordinates
+                const screenPoint = svgPoint.matrixTransform(newMatrix);
+                
+                // Restore original transform
+                currentSvg.style.transform = originalTransform;
+                
+                // Calculate target position to center the location
+                const targetX = (containerWidth / 2) - screenPoint.x;
+                const targetY = (containerHeight / 2) - screenPoint.y;
+                
+                // Start animation only if we're not already close to the target
+                const distanceThreshold = 0.2; // 20% threshold instead of 10%
+                const currentDistance = Math.sqrt(
+                    Math.pow(currentTransform.x - targetX, 2) + 
+                    Math.pow(currentTransform.y - targetY, 2)
+                );
+                const maxDistance = Math.sqrt(containerWidth * containerWidth + containerHeight * containerHeight);
+                
+                if (currentDistance > maxDistance * distanceThreshold || 
+                    Math.abs(currentTransform.scale - targetScale) > targetScale * distanceThreshold) {
+                    animateNavigation(targetX, targetY, targetScale);
+                } else {
+                    // Already close enough, just show the marker
+                    showTemporaryMarker(location);
+                }
             }, 100);
         }
         
@@ -900,8 +1130,8 @@
             const step = 0.1;
             let newScale = currentTransform.scale + (direction * step);
             
-            // Limit zoom range (0.1-6.0)
-            newScale = Math.max(0.1, Math.min(6.0, newScale));
+            // Limit zoom range (0.1-20.0) - increased maximum zoom
+            newScale = Math.max(0.1, Math.min(20.0, newScale));
             
             // Get center of the viewport for zooming
             const containerWidth = mapContainer.clientWidth;
@@ -921,7 +1151,7 @@
             zoomLevel.textContent = `${Math.round(newScale * 100)}%`;
            
             // Update marker sizes after zoom
-             updateMarkerSizes();
+            updateMarkerSizes();
         }
         
         function handleWheel(e) {
@@ -930,10 +1160,10 @@
             e.preventDefault();
             
             const direction = e.deltaY < 0 ? 1 : -1;
-            const step = 0.1;
+            const step = 0.2;
             let newScale = currentTransform.scale + (direction * step);
             
-            newScale = Math.max(0.1, Math.min(6.0, newScale));
+            newScale = Math.max(0.1, Math.min(20.0, newScale));
             
             // Get mouse position
             const rect = mapContainer.getBoundingClientRect();
@@ -953,7 +1183,7 @@
             zoomLevel.textContent = `${Math.round(newScale * 100)}%`;
 
             // Update marker sizes after zoom
-             updateMarkerSizes();
+            updateMarkerSizes();
         }
         
         // Dragging functions
