@@ -395,6 +395,14 @@
             <button id="toggle-panel" class="toggle-btn">◀</button>
         </div>
         <ul id="locations-list">
+        <!--<li class="category-header" data-category="Имя категории(en)">
+                <span>Отображаемое название</span>
+                <span class="category-arrow">▼</span>
+            </li>
+            <ul class="category-list" data-category="Имя категории(en)">
+                <li data-id="ID">Отображаемое название локации</li>
+            </ul> -->
+            
             <li class="category-header" data-category="common">
                 <span>Общие помещения</span>
                 <span class="category-arrow">▼</span>
@@ -404,27 +412,41 @@
                 <li data-id="19">Карцер</li>
                 <li data-id="20">Кабинет НСБ</li>
                 <li data-id="21">Центр переподготовки</li>
-                <li data-id="22">Шелтер LCZ</li>
-                <li data-id="23">Шелтер ТГ</li>
-                <li data-id="24">Шелтер ГП</li>
                 <li data-id="25">Казармы СБ</li>
                 <li data-id="26">Казармы ТГ</li>
                 <li data-id="27">Кабинет ДЗ</li>
                 <li data-id="28">Комната допроса</li>
-                <li data-id="29">Чекпоинт LCZ - HCZ-A №1</li>
-                <li data-id="30">Чекпоинт LCZ - HCZ-A №2</li>
-                <li data-id="31">Чекпоинт LCZ - Офисы</li>
-                <li data-id="32">Чекпоинт LCZ - HCZ-B</li>
-                <li data-id="33">Чекпоинт Офисы - HCZ-B</li>
-                <li data-id="34">Чекпоинт HCZ-A - Офисы</li>
-                <li data-id="35">Зона отдыха</li>
+                <li data-id="35">Блок исследований</li>
                 <li data-id="36">Кабинет ГП</li>
-                <li data-id="37">Кофитерий</li>
+                <li data-id="37">Кафитерий</li>
                 <li data-id="38">Склад</li>
-                <li data-id="39">Комната ШПХ</li>
+                <!-- <li data-id="39">Комната ШПХ</li> -->
                 <li data-id="40">Gate-A</li>
                 <li data-id="41">Gate-B</li>
+            </ul>
 
+            <li class="category-header" data-category="shelter">
+                <span>Шелтеры</span>
+                <span class="category-arrow">▼</span>
+            </li>
+            <ul class="category-list" data-category="shelter">
+                <li data-id="22">Шелтер LCZ</li>
+                <li data-id="23">Шелтер EZ №1</li>
+                <li data-id="24">Шелтер EZ №2</li>
+                <li data-id="42">Шелтер HCZ-A</li>
+            </ul>
+
+            <li class="category-header" data-category="checkpoint">
+                <span>Чекпоинты</span>
+                <span class="category-arrow">▼</span>
+            </li>
+            <ul class="category-list" data-category="checkpoint">
+                <li data-id="29">Чекпоинт LCZ - HCZ-A №1</li>
+                <li data-id="30">Чекпоинт LCZ - HCZ-A №2</li>
+                <li data-id="31">Чекпоинт LCZ - EZ</li>
+                <li data-id="32">Чекпоинт LCZ - HCZ-B</li>
+                <li data-id="33">Чекпоинт EZ - HCZ-B</li>
+                <li data-id="34">Чекпоинт EZ - HCZ-A</li>
             </ul>
             
             <li class="category-header" data-category="research">
@@ -448,13 +470,6 @@
                 <li data-id="15">SCP-966</li>
                 <li data-id="16">SCP-999</li>
                 <li data-id="17">SCP-1025</li>
-            </ul>
-            
-            <!--<li class="category-header" data-category="admin">
-                <span>Административные помещения</span>
-                <span class="category-arrow">▼</span>
-            </li> -->
-            <ul class="category-list" data-category="admin">
             </ul>
         </ul>
     </div>
@@ -516,24 +531,29 @@
             { id: 19, name: "Карцер", floor: 1, coordinates: { x: 430, y: 343 }, description: " " },
             { id: 20, name: "Кабинет НСБ", floor: 2, coordinates: { x: 384, y: 366 }, description: " " },
             { id: 21, name: "Центр переподготовки", floor: 3, coordinates: { x: 426, y: 352 }, description: "СБ-3-2" },
+            
             { id: 22, name: "Шелтер LCZ", floor: 1, coordinates: { x: 369, y: 397 }, description: " " },
-            { id: 23, name: "Шелтер ТГ", floor: 1, coordinates: { x: 531, y: 557 }, description: " " },
-            { id: 24, name: "Шелтер ГП", floor: 2, coordinates: { x: 509, y: 694 }, description: " " },
+            { id: 23, name: "Шелтер EZ №1", floor: 1, coordinates: { x: 531, y: 557 }, description: " " },
+            { id: 24, name: "Шелтер EZ №2", floor: 2, coordinates: { x: 509, y: 694 }, description: " " },
+            { id: 42, name: "Шелтер HCZ-A", floor: -1, coordinates: { x: 358, y: 556 }, description: " " },
+            
             { id: 25, name: "Казармы СБ", floor: 1, coordinates: { x: 377, y: 466 }, description: " " },
             { id: 26, name: "Казармы ТГ", floor: 1, coordinates: { x: 544, y: 560 }, description: " " },
             { id: 27, name: "Кабинет ДЗ", floor: 1, coordinates: { x: 560, y: 659 }, description: " " },
             { id: 28, name: "Комната допроса", floor: 1, coordinates: { x: 583, y: 586 }, description: " " },
+            
             { id: 29, name: "Чекпоинт LCZ - HCZ-A №1", floor: 1, coordinates: { x: 292, y: 442 }, description: " " },
             { id: 30, name: "Чекпоинт LCZ - HCZ-A №2", floor: 1, coordinates: { x: 349, y: 499 }, description: " " },
-            { id: 31, name: "Чекпоинт LCZ - Офисы", floor: 1, coordinates: { x: 462, y: 536 }, description: "Быстрый чекпоинт" },
+            { id: 31, name: "Чекпоинт LCZ - EZ", floor: 1, coordinates: { x: 462, y: 536 }, description: "Быстрый чекпоинт" },
             { id: 32, name: "Чекпоинт LCZ - HCZ-B", floor: 1, coordinates: { x: 559, y: 479 }, description: " " },
-            { id: 33, name: "Чекпоинт Офисы - HCZ-B", floor: 1, coordinates: { x: 559, y: 555 }, description: " " },
-            { id: 34, name: "Чекпоинт HCZ-A - Офисы", floor: 1, coordinates: { x: 443, y: 631 }, description: " " },
-            { id: 35, name: "Зона отдыха", floor: 1, coordinates: { x: 537, y: 712 }, description: " " },
+            { id: 33, name: "Чекпоинт EZ - HCZ-B", floor: 1, coordinates: { x: 559, y: 555 }, description: " " },
+            { id: 34, name: "Чекпоинт EZ - HCZ-A", floor: 1, coordinates: { x: 443, y: 631 }, description: " " },
+            
+            { id: 35, name: "Блок исследований", floor: 1, coordinates: { x: 537, y: 712 }, description: " " },
             { id: 36, name: "Кабинет ГП", floor: 2, coordinates: { x: 537, y: 697 }, description: " " },
-            { id: 37, name: "Кофитерий", floor: 2, coordinates: { x: 607, y: 655 }, description: " " },
+            { id: 37, name: "Кафитерий", floor: 2, coordinates: { x: 607, y: 655 }, description: " " },
             { id: 38, name: "Склад", floor: -1, coordinates: { x: 559, y: 538 }, description: " " },
-            { id: 39, name: "Комната ШПХ", floor: -2, coordinates: { x: 583, y: 447 }, description: " " },
+            // { id: 39, name: "Комната ШПХ", floor: -2, coordinates: { x: 583, y: 447 }, description: " " },
             { id: 40, name: "Gate-A", floor: 3, coordinates: { x: 722, y: 644 }, description: " " },
             { id: 41, name: "Gate-B", floor: -1, coordinates: { x: 409, y: 684 }, description: " " },
         ];
@@ -1243,3 +1263,4 @@
     </script>
 </body>
 </html>
+
