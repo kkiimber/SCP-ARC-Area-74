@@ -1150,8 +1150,8 @@
             const step = 0.1;
             let newScale = currentTransform.scale + (direction * step);
             
-            // Limit zoom range (0.1-20.0) - increased maximum zoom
-            newScale = Math.max(0.1, Math.min(20.0, newScale));
+            // Limit zoom range (1.5-20.0) - increased maximum zoom
+            newScale = Math.max(1.0, Math.min(20.0, newScale));
             
             // Get center of the viewport for zooming
             const containerWidth = mapContainer.clientWidth;
@@ -1183,7 +1183,7 @@
             const step = 0.2;
             let newScale = currentTransform.scale + (direction * step);
             
-            newScale = Math.max(0.1, Math.min(20.0, newScale));
+            newScale = Math.max(1.0, Math.min(20.0, newScale));
             
             // Get mouse position
             const rect = mapContainer.getBoundingClientRect();
@@ -1263,5 +1263,6 @@
     </script>
 </body>
 </html>
+
 
 
