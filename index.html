@@ -1080,21 +1080,7 @@
                 const targetX = (containerWidth / 2) - screenPoint.x;
                 const targetY = (containerHeight / 2) - screenPoint.y;
                 
-                // Start animation only if we're not already close to the target
-                const distanceThreshold = 0.2; // 20% threshold instead of 10%
-                const currentDistance = Math.sqrt(
-                    Math.pow(currentTransform.x - targetX, 2) + 
-                    Math.pow(currentTransform.y - targetY, 2)
-                );
-                const maxDistance = Math.sqrt(containerWidth * containerWidth + containerHeight * containerHeight);
-                
-                if (currentDistance > maxDistance * distanceThreshold || 
-                    Math.abs(currentTransform.scale - targetScale) > targetScale * distanceThreshold) {
-                    animateNavigation(targetX, targetY, targetScale);
-                } else {
-                    // Already close enough, just show the marker
-                    showTemporaryMarker(location);
-                }
+                animateNavigation(targetX, targetY, targetScale);
             }, 100);
         }
         
@@ -1263,6 +1249,7 @@
     </script>
 </body>
 </html>
+
 
 
 
