@@ -1,0 +1,693 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Custom scrollbar - Webkit */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Custom scrollbar - Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.05) transparent;
+}
+
+*::-moz-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+*::-moz-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    background-color: #1b0b18;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+#map-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.floor-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.floor-container.active {
+    display: block;
+    opacity: 1;
+}
+
+.floor-svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Новые стили для обновленного дизайна */
+
+/* Обновленный заголовок */
+.new-header {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    padding: 10px 20px;
+}
+
+.author-link {
+    width: 32px;
+    height: 32px;
+    display: block;
+}
+
+.author-link img {
+    width: 130%;
+    height: 130%;
+    object-fit: contain;
+}
+
+/* Новая панель навигации */
+.new-panel {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 50;
+    height: 100vh;
+    width: 320px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(27, 11, 24, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.new-panel.collapsed {
+    transform: translateX(-100%);
+}
+
+/* Шапка панели */
+.panel-header-new {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    padding-top: 20px;
+}
+
+.panel-title {
+    background: linear-gradient(135deg, #fa005a, #FF9800);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+.toggle-btn-new {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.toggle-btn-new:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Поиск */
+.panel-search {
+    position: relative;
+    padding: 10px 20px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 35px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px 10px 10px 35px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    color: white;
+    font-size: 14px;
+    transition: border-color 0.2s;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #fa005a;
+}
+
+.search-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Список категорий */
+.categories-scroll {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 20px;
+}
+
+.categories-list {
+    flex-direction: column;
+    gap: 24px;
+    padding-bottom: 20px;
+}
+
+.category-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.category-header-new {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+    user-select: none;
+}
+
+.category-header-new:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.category-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.category-name {
+    flex: 1;
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+}
+
+.category-count {
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 12px;
+    margin-left: auto;
+}
+
+.category-arrow-new {
+    transition: transform 0.2s;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.category-header-new.collapsed .category-arrow-new {
+    transform: rotate(-90deg);
+}
+
+.category-locations {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    overflow: hidden;
+    transition: all 0.2s ease;
+}
+
+.category-locations.collapsed {
+    max-height: 0;
+    opacity: 0;
+}
+
+.category-locations:not(.collapsed) {
+    max-height: 2000px;
+    opacity: 1;
+}
+
+/* Элементы локаций */
+.location-item-new {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px 8px 28px;
+    margin: 2px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.location-item-new:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.location-item-new.selected {
+    background: rgba(250, 0, 90, 0.15);
+    box-shadow: 0 0 0 1px rgba(250, 0, 90, 0.5);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.location-icon {
+    flex-shrink: 0;
+    transition: color 0.3s ease;
+}
+
+.location-info {
+    flex: 1;
+}
+
+.location-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: white;
+    margin-bottom: 2px;
+}
+
+.location-floor {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.location-desc {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 2px;
+}
+
+/* Стили для переключателя дизайна */
+.design-toggle-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    padding: 0 5px;
+}
+
+.toggle-label {
+    font-size: 12px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 36px;
+    height: 20px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: .4s;
+    border-radius: 20px;
+}
+
+.toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 2px;
+    bottom: 2px;
+    background-color: rgba(255, 255, 255, 0.7);
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .toggle-slider {
+    background-color: #fa005a;
+    border-color: rgba(250, 0, 90, 0.5);
+}
+
+input:checked + .toggle-slider:before {
+    transform: translateX(16px);
+    background-color: white;
+}
+
+.keys-hint {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 12px;
+}
+
+.keys-hint kbd {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 11px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Подсказка горячих клавиш */
+.hotkeys-hint {
+    padding: 15px 20px;
+    padding-bottom: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Новая кнопка открытия панели */
+.collapsed-panel-new {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 50;
+}
+
+.expand-btn-new {
+    background: rgba(27, 11, 24, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 6px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: background-color 0.2s;
+}
+
+.expand-btn-new:hover {
+    background: rgba(250, 0, 90, 0.2);
+}
+
+/* Цвета категорий */
+.category-color-common { background-color: #3B82F6; }
+.category-color-shelter { background-color: #10B981; }
+.category-color-checkpoint { background-color: #F59E0B; }
+.category-color-research { background-color: #EF4444; }
+
+/* Цвета иконок локаций по категориям */
+.location-icon-common { color: #3B82F6; }
+.location-icon-shelter { color: #10B981; }
+.location-icon-checkpoint { color: #F59E0B; }
+.location-icon-research { color: #EF4444; }
+
+/* Элементы управления картой */
+#zoom-controls {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    z-index: 90;
+}
+
+.zoom-btn {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(27, 11, 24, 0.95);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    margin: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#floor-controls {
+    position: fixed;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    z-index: 90;
+}
+
+.floor-controls-bg {
+    display: none;
+}
+
+.floor-btn {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(27, 11, 24, 0.95);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.floor-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.floor-btn.active {
+    background-color: rgba(250, 0, 90, 0.2);
+    font-weight: bold;
+}
+
+/* Новый стиль для SVG меток */
+.location-marker {
+    fill: #fa005a;
+    stroke: white;
+    filter: drop-shadow(0 0 10px rgba(250, 0, 90, 0.7));
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.location-marker:hover {
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 15px rgba(250, 0, 90, 1));
+}
+
+.location-marker-text {
+    fill: white;
+    font-size: 12px;
+    text-anchor: middle;
+    font-weight: bold;
+    paint-order: stroke;
+    stroke: #000;
+    stroke-width: 3px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    pointer-events: none;
+    transition: all 0.2s ease;
+}
+
+.location-marker-group:hover .location-marker-text {
+    transform: translateY(-5px);
+}
+
+.marker-popup {
+    fill: rgba(0, 0, 0, 0.9);
+    stroke: rgba(255, 255, 255, 0.2);
+    stroke-width: 1;
+    rx: 6;
+    ry: 6;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.7));
+}
+
+.marker-popup-text {
+    fill: white;
+    font-size: 12px;
+    pointer-events: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.marker-popup-title {
+    font-weight: bold;
+    fill: #fa005a;
+    font-size: 14px;
+}
+
+.marker-popup-desc {
+    font-size: 11px;
+    fill: #cccccc;
+}
+
+.marker-popup-arrow {
+    fill: rgba(0, 0, 0, 0.9);
+    stroke: rgba(255, 255, 255, 0.2);
+    stroke-width: 1;
+}
+
+@keyframes pulse {
+    0% { r: 8; opacity: 1; }
+    50% { r: 12; opacity: 0.7; }
+    100% { r: 8; opacity: 1; }
+}
+
+#map-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    cursor: grab;
+}
+
+#map-overlay:active {
+    cursor: grabbing;
+}
+
+#coordinates-display {
+    position: fixed;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(27, 11, 24, 0.95);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-family: monospace;
+    z-index: 100;
+}
+
+#version-info {
+    position: fixed;
+    bottom: 2px;
+    right: 5px;
+    color: rgba(255,255,255,0.3);
+    font-size: 10px;
+    z-index: 100;
+}
+
+.hovered-element {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.no-results {
+    text-align: center;
+    color: rgba(255,255,255,0.5);
+    padding: 20px;
+    font-size: 14px;
+}
+
+/* Анимации для смены этажей и дизайна */
+.floor-transition-enter {
+    opacity: 0;
+    z-index: 2;
+}
+
+.floor-transition-enter-active {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.floor-transition-exit {
+    opacity: 1;
+    z-index: 1;
+}
+
+.floor-transition-exit-active {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.design-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.default-design {
+    opacity: 1;
+    z-index: 1;
+}
+
+.alternative-design {
+    opacity: 0;
+    z-index: 2;
+}
+
+.alternative-design.active {
+    opacity: 1;
+}
+
+.default-design.hidden {
+    opacity: 0;
+}
+
+/* Адаптивность */
+@media (max-height: 600px) {
+    .categories-scroll {
+        max-height: 300px;
+    }
+}
