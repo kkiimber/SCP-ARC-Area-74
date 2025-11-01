@@ -23,7 +23,7 @@ const locations = [
     { id: 12, name: "SCP-797", floor: 1, coordinates: { x: 312.5, y: 488 }, description: "Любопытный полтергейст", category: "research" },
     { id: 13, name: "SCP-914", floor: 1, coordinates: { x: 372.5, y: 498 }, description: "Часовой механизм", category: "research" },
     { id: 14, name: "SCP-939", floor: 0, coordinates: { x: 123, y: 575 }, description: "Со множеством голосов", category: "research" },
-    { id: 15, name: "SCP-966", floor: 1, coordinates: { x: 572, y: 459 }, description: "Безсонники", category: "research" },
+    { id: 15, name: "SCP-966", floor: 1, coordinates: { x: 572, y: 459 }, description: "Бессонники", category: "research" },
     { id: 16, name: "SCP-999", floor: 1, coordinates: { x: 481, y: 433.5 }, description: "Щекоточный монстр", category: "research" },
     { id: 17, name: "SCP-1025", floor: 1, coordinates: { x: 518.5, y: 511 }, description: "Энциклопедия заболеваний", category: "research" },
     
@@ -51,7 +51,7 @@ const locations = [
     
     { id: 35, name: "Блок исследований", floor: 1, coordinates: { x: 537, y: 712 }, description: " ", category: "common" },
     { id: 36, name: "Кабинет ГП", floor: 2, coordinates: { x: 537, y: 697 }, description: " ", category: "common" },
-    { id: 37, name: "Кафитерий", floor: 2, coordinates: { x: 607, y: 655 }, description: " ", category: "common" },
+    { id: 37, name: "Кафетерий", floor: 2, coordinates: { x: 607, y: 655 }, description: " ", category: "common" },
     { id: 38, name: "Склад", floor: -1, coordinates: { x: 559, y: 538 }, description: " ", category: "common" },
     { id: 40, name: "Gate-A", floor: 3, coordinates: { x: 722, y: 644 }, description: " ", category: "common" },
     { id: 41, name: "Gate-B", floor: -1, coordinates: { x: 409, y: 684 }, description: " ", category: "common" },
@@ -1100,4 +1100,5 @@ function applyTransform() {
 }
 
 // Initialize the app
+
 window.addEventListener('DOMContentLoaded', init);
