@@ -134,8 +134,8 @@ function init() {
     };
     
     // Event listeners for zoom controls
-    zoomInBtn.addEventListener('click', () => zoom(1));
-    zoomOutBtn.addEventListener('click', () => zoom(-1));
+    zoomInBtn.addEventListener('click', () => zoom(2));
+    zoomOutBtn.addEventListener('click', () => zoom(-2));
     
     // Event listeners for floor controls
     floorBtns.forEach(btn => {
@@ -189,7 +189,7 @@ function init() {
     mapContainer.addEventListener('wheel', handleWheel, { passive: false });
     
     // Update zoom level display
-    zoomLevel.textContent = `${Math.round(currentTransform.scale * 100)}%`;
+    zoomLevel.textContent = `${Math.round(currentTransform.scale * 10)}%`;
     
     // Handle window resize
     window.addEventListener('resize', handleResize);
@@ -453,7 +453,7 @@ function resetView() {
     currentTransform.scale = 1;
     
     applyTransform();
-    zoomLevel.textContent = '100%';
+    zoomLevel.textContent = '10%';
     
     // Убираем все временные маркеры
     removeAllTemporaryMarkers();
@@ -976,7 +976,7 @@ function animateNavigation(targetX, targetY, targetScale) {
         currentTransform.scale = startScale + (targetScale - startScale) * easeProgress;
         
         applyTransform();
-        zoomLevel.textContent = `${Math.round(currentTransform.scale * 100)}%`;
+        zoomLevel.textContent = `${Math.round(currentTransform.scale * 10)}%`;
 
         // Update marker sizes after zoom
         updateMarkerSizes();
@@ -1004,7 +1004,7 @@ function zoom(direction) {
     let newScale = currentTransform.scale + (direction * step);
     
     // Limit zoom range (1.0-20.0)
-    newScale = Math.max(1.0, Math.min(20.0, newScale));
+    newScale = Math.max(1.0, Math.min(50.0, newScale));
     // Get center of the viewport for zooming
     const containerWidth = mapContainer.clientWidth;
     const containerHeight = mapContainer.clientHeight;
@@ -1020,7 +1020,7 @@ function zoom(direction) {
     currentTransform.scale = newScale;
     
     applyTransform();
-    zoomLevel.textContent = `${Math.round(newScale * 100)}%`;
+    zoomLevel.textContent = `${Math.round(newScale * 10)}%`;
    
     // Update marker sizes after zoom
     updateMarkerSizes();
@@ -1035,7 +1035,7 @@ function handleWheel(e) {
     const step = currentTransform.scale * 0.1; // 10% of current scale
     let newScale = currentTransform.scale + (direction * step);
     
-    newScale = Math.max(1.0, Math.min(20.0, newScale));
+    newScale = Math.max(1.0, Math.min(50.0, newScale));
     // Get mouse position
     const rect = mapContainer.getBoundingClientRect();
     const mouseX = e.clientX - rect.left;
@@ -1051,7 +1051,7 @@ function handleWheel(e) {
     currentTransform.scale = newScale;
     
     applyTransform();
-    zoomLevel.textContent = `${Math.round(newScale * 100)}%`;
+    zoomLevel.textContent = `${Math.round(newScale * 10)}%`;
 
     // Update marker sizes after zoom
     updateMarkerSizes();
@@ -1100,5 +1100,4 @@ function applyTransform() {
 }
 
 // Initialize the app
-
 window.addEventListener('DOMContentLoaded', init);
