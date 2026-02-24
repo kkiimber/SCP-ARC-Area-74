@@ -82,27 +82,6 @@ body {
 
 /* Новые стили для обновленного дизайна */
 
-/* Обновленный заголовок */
-.new-header {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 100;
-    padding: 10px 20px;
-}
-
-.author-link {
-    width: 32px;
-    height: 32px;
-    display: block;
-}
-
-.author-link img {
-    width: 130%;
-    height: 130%;
-    object-fit: contain;
-}
-
 /* Новая панель навигации */
 .new-panel {
     position: fixed;
@@ -690,4 +669,149 @@ input:checked + .toggle-slider:before {
     .categories-scroll {
         max-height: 300px;
     }
+}
+
+/* Обновленный заголовок */
+.new-header {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    padding: 10px 10px;
+}
+
+.author-link {
+    width: 32px;
+    height: 32px;
+    display: block;
+}
+
+.author-link img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.author-container {
+    position: relative;
+    display: inline-block;
+}
+
+.author-popup {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 10px;
+    background: rgba(27, 11, 24, 0.98);
+    border: 1px solid rgba(250, 0, 90, 0.5);
+    border-radius: 8px;
+    padding: 15px;
+    min-width: 300px;
+    max-width: 320px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-5px);
+    transition: all 0.3s ease;
+    z-index: 200;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(250, 0, 90, 0.2);
+}
+
+.author-popup::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    right: 20px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid rgba(250, 0, 90, 0.5);
+    display: none !important;
+    content: none !important;
+}
+
+.author-popup::after {
+    content: '';
+    position: absolute;
+    top: -7px;
+    right: 20px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid rgba(27, 11, 24, 0.98);
+    display: none !important;
+    content: none !important;
+}
+
+.author-container:hover .author-popup {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.popup-content {
+    color: white;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.popup-title {
+    font-weight: bold;
+    color: #fa005a;
+    margin-bottom: 10px;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 8px;
+}
+.popup-title-a {
+    font-weight: bold;
+    color: #fa005a;
+    margin-bottom: 10px;
+    font-size: 14px;  
+    font-weight: 700
+}
+
+.popup-line {
+    margin-bottom: 8px;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.popup-line-a {
+    margin-bottom: 8px;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: bold;
+}
+
+.popup-pay {
+    color: #5affa4;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 5px;
+    display: inline-block;
+    background: rgba(38, 255, 128, 0.2);
+    padding: 4px 10px;
+    border-radius: 4px;
+    user-select: text;
+    text-decoration: none;
+}
+
+.popup-label {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.popup-discord {
+    color: #5865F2;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 5px;
+    display: inline-block;
+    background: rgba(88, 101, 242, 0.15);
+    padding: 4px 10px;
+    border-radius: 4px;
+    user-select: text;
+    -webkit-user-select: text;
+    cursor: text;
 }

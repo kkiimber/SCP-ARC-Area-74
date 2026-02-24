@@ -32,10 +32,10 @@ const locations = [
     { id: 20, name: "Кабинет НСБ", floor: 2, coordinates: { x: 384, y: 366 }, description: " ", category: "common" },
     { id: 21, name: "Центр переподготовки", floor: 3, coordinates: { x: 426, y: 352 }, description: " ", category: "common" },
     
-    { id: 22, name: "LCZ", floor: 1, coordinates: { x: 369, y: 397 }, description: " ", category: "shelter" },
-    { id: 23, name: "EZ №1", floor: 1, coordinates: { x: 531, y: 557 }, description: " ", category: "shelter" },
-    { id: 24, name: "EZ №2", floor: 2, coordinates: { x: 509, y: 694 }, description: " ", category: "shelter" },
-    { id: 42, name: "HCZ-A", floor: 1, coordinates: { x: 358, y: 556 }, description: " ", category: "shelter" },
+    { id: 22, name: "LCZ", floor: 1, coordinates: { x: 369, y: 397 }, description: "Шелтер D-Блока", category: "shelter" },
+    { id: 23, name: "EZ №1", floor: 1, coordinates: { x: 531, y: 557 }, description: "Шелтер ТГ", category: "shelter" },
+    { id: 24, name: "EZ №2", floor: 2, coordinates: { x: 509, y: 694 }, description: "Шелтер ГП", category: "shelter" },
+    { id: 42, name: "HCZ-A", floor: 1, coordinates: { x: 358, y: 556 }, description: "Шелтер Кетер зоны", category: "shelter" },
     
     { id: 25, name: "Казармы СБ", floor: 1, coordinates: { x: 377, y: 466 }, description: " ", category: "common" },
     { id: 26, name: "Казармы ТГ", floor: 1, coordinates: { x: 544, y: 560 }, description: " ", category: "common" },
